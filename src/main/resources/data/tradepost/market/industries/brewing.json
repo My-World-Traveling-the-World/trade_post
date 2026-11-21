@@ -1,0 +1,20 @@
+{
+  "id": "brewing",
+  "display": "酿造",
+  "supply": [
+    "@brew",
+    "@potion",
+    "@bottle"
+  ],
+  "demand": [
+    "@bottle",
+    "@berry",
+    "@fruit",
+    "@grain"
+  ],
+  "biome_weights": {
+    "#minecraft:is_forest": 2,
+    "#c:is_plains": 2,
+    "default": 1
+  }
+}

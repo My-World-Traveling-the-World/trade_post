@@ -1,0 +1,17 @@
+{
+  "id": "name_tag_hoard",
+  "item": "minecraft:name_tag",
+  "count": 2,
+  "cost": [
+    {
+      "item": "minecraft:paper",
+      "value": 4
+    },
+    {
+      "item": "minecraft:gold_ingot",
+      "value": 3
+    }
+  ],
+  "weight": 16,
+  "value_multiplier": 5
+}

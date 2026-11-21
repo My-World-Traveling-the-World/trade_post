@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:village",
+    "heaven:village_angels",
+    "end_villager_outpost:end_villager_outpost",
+    "lios_outlandish_villages:hobbit_village",
+    "lios_outlandish_villages:spiral_tower_village",
+    "lios_outlandish_villages:spiral_tower_village_sea"
+  ]
+}

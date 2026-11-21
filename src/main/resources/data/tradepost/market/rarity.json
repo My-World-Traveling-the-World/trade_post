@@ -1,0 +1,300 @@
+{
+ "items": {
+  "biomesoplenty:flesh": {
+   "d": 1280,
+   "s": "worldgen",
+   "t": 1
+  },
+  "biomesoplenty:porous_flesh": {
+   "d": 1280,
+   "s": "worldgen",
+   "t": 1
+  },
+  "galosphere:deepslate_palladium_ore": {
+   "d": 192,
+   "s": "worldgen",
+   "t": 1
+  },
+  "galosphere:palladium_ore": {
+   "d": 192,
+   "s": "worldgen",
+   "t": 1
+  },
+  "galosphere:raw_palladium": {
+   "d": 192,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:ancient_debris": {
+   "d": 3,
+   "s": "worldgen",
+   "t": 4
+  },
+  "minecraft:andesite": {
+   "d": 128,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:blackstone": {
+   "d": 66,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:chiseled_quartz_block": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:clay": {
+   "d": 1518,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:clay_ball": {
+   "d": 1518,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:coal": {
+   "d": 1700,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:coal_ore": {
+   "d": 1700,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:copper_ore": {
+   "d": 320,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate": {
+   "d": 126,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_coal_ore": {
+   "d": 1700,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_copper_ore": {
+   "d": 320,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_diamond_ore": {
+   "d": 32,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:deepslate_emerald_ore": {
+   "d": 300,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_gold_ore": {
+   "d": 450,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_iron_ore": {
+   "d": 900,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:deepslate_lapis_ore": {
+   "d": 28,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:deepslate_redstone_ore": {
+   "d": 400,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:diamond": {
+   "d": 32,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:diamond_ore": {
+   "d": 32,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:diorite": {
+   "d": 128,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:dirt": {
+   "d": 231,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:emerald": {
+   "d": 300,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:emerald_ore": {
+   "d": 300,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:flint": {
+   "d": 462,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:gold_nugget": {
+   "d": 200,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:gold_ore": {
+   "d": 450,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:granite": {
+   "d": 128,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:gravel": {
+   "d": 462,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:iron_block": {
+   "d": 12,
+   "s": "worldgen",
+   "t": 3
+  },
+  "minecraft:iron_ore": {
+   "d": 900,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:lapis_lazuli": {
+   "d": 28,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:lapis_ore": {
+   "d": 28,
+   "s": "worldgen",
+   "t": 2
+  },
+  "minecraft:magma_block": {
+   "d": 132,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:nether_gold_ore": {
+   "d": 200,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:nether_quartz_ore": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:netherrack": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:quartz": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:quartz_block": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:quartz_bricks": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:raw_copper": {
+   "d": 320,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:raw_gold": {
+   "d": 450,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:raw_iron": {
+   "d": 900,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:redstone": {
+   "d": 400,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:redstone_ore": {
+   "d": 400,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:smooth_quartz": {
+   "d": 448,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:soul_sand": {
+   "d": 144,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:stone": {
+   "d": 126,
+   "s": "worldgen",
+   "t": 1
+  },
+  "minecraft:tuff": {
+   "d": 128,
+   "s": "worldgen",
+   "t": 1
+  },
+  "pureemeraldtools:pure_emerald": {
+   "d": 300,
+   "s": "worldgen",
+   "t": 1
+  },
+  "things:deepslate_gleaming_ore": {
+   "d": 9,
+   "s": "worldgen",
+   "t": 3
+  },
+  "things:gleaming_ore": {
+   "d": 9,
+   "s": "worldgen",
+   "t": 3
+  },
+  "things:gleaming_powder": {
+   "d": 9,
+   "s": "worldgen",
+   "t": 3
+  },
+  "wings_ac:fairy_dust": {
+   "d": 300,
+   "s": "worldgen",
+   "t": 1
+  }
+ },
+ "version": 1
+}

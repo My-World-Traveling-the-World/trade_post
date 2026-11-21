@@ -1,0 +1,20 @@
+{
+  "id": "fishing",
+  "display": "渔猎",
+  "supply": [
+    "@fish",
+    "@aquatic",
+    "@game"
+  ],
+  "demand": [
+    "@fiber",
+    "minecraft:bone",
+    "@bottle"
+  ],
+  "biome_weights": {
+    "#c:is_river": 3,
+    "#c:is_beach": 2,
+    "#c:is_ocean": 2,
+    "default": 1
+  }
+}

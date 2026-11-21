@@ -1,0 +1,20 @@
+{
+  "id": "mining",
+  "display": "采矿",
+  "supply": [
+    "@ore",
+    "@raw_ore",
+    "@log"
+  ],
+  "demand": [
+    "@log",
+    "@plank",
+    "@coal",
+    "minecraft:torch"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 3,
+    "#c:is_badlands": 2,
+    "default": 1
+  }
+}

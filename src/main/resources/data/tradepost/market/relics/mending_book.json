@@ -1,0 +1,17 @@
+{
+  "id": "mending_book",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "cost": [
+    {
+      "item": "minecraft:lapis_lazuli",
+      "value": 12
+    },
+    {
+      "item": "minecraft:book",
+      "value": 6
+    }
+  ],
+  "weight": 8,
+  "value_multiplier": 15
+}

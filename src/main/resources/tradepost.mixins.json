@@ -1,0 +1,16 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "dev.guoke.tradepost.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MerchantInventoryMixin",
+    "MerchantResultSlotMixin",
+    "MerchantScreenHandlerMixin",
+    "OfferClampMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

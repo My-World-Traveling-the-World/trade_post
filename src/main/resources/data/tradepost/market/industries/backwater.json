@@ -1,0 +1,20 @@
+{
+  "id": "backwater",
+  "display": "荒僻",
+  "supply": [
+    "@mushroom",
+    "@tuber",
+    "minecraft:rotten_flesh",
+    "minecraft:stick"
+  ],
+  "demand": [
+    "@tuber",
+    "@vegetable",
+    "@stone",
+    "@fiber",
+    "@grain"
+  ],
+  "biome_weights": {
+    "#minecraft:is_overworld": 1
+  }
+}

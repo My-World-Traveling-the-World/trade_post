@@ -1,0 +1,20 @@
+{
+  "id": "orchard",
+  "display": "果园",
+  "supply": [
+    "@fruit",
+    "@berry",
+    "@nut",
+    "@sapling"
+  ],
+  "demand": [
+    "@bottle",
+    "@milk",
+    "minecraft:honeycomb"
+  ],
+  "biome_weights": {
+    "#minecraft:is_forest": 3,
+    "#c:is_plains": 2,
+    "default": 1
+  }
+}

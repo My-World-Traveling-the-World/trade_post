@@ -1,0 +1,34 @@
+{
+  "industries": [
+    "armory",
+    "backwater",
+    "banquet",
+    "brewing",
+    "coal",
+    "commerce",
+    "cookery",
+    "dyer",
+    "farming",
+    "fishing",
+    "forestry",
+    "gems",
+    "herding",
+    "kiln",
+    "mining",
+    "nursery",
+    "orchard",
+    "quarrying",
+    "scholar",
+    "smelting",
+    "textile",
+    "vehicle"
+  ],
+  "relics": [
+    "ancient_debris",
+    "diamond_cache",
+    "golden_apple_secret",
+    "mending_book",
+    "name_tag_hoard",
+    "totem_trade"
+  ]
+}

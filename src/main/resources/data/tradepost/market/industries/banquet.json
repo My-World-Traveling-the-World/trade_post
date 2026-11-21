@@ -1,0 +1,17 @@
+{
+  "id": "banquet",
+  "display": "酒肆",
+  "supply": [
+    "@brew",
+    "@food",
+    "@grain"
+  ],
+  "demand": [
+    "@grain",
+    "@raw_meat",
+    "@brew"
+  ],
+  "biome_weights": {
+    "default": 1
+  }
+}

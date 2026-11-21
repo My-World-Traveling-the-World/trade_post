@@ -1,0 +1,807 @@
+{
+  "grain": {
+    "display": "谷物",
+    "tags": [
+      "#c:foods/grain",
+      "#c:crops"
+    ],
+    "names": [
+      "(^|:)(wheat|barley|rye|oats?|rice|corn|millet|quinoa)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "tuber": {
+    "display": "块茎",
+    "tags": [],
+    "names": [
+      "(potato|potatoes|carrot|beetroot|turnip|sweet_potato|yam|cassava)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.35
+  },
+  "vegetable": {
+    "display": "蔬菜",
+    "tags": [
+      "#c:foods/vegetable"
+    ],
+    "names": [
+      "(tomato|cabbage|onion|garlic|lettuce|spinach|pepper|chili|cucumber|pumpkin|broccoli|leek|kale|eggplant|zucchini)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "fruit": {
+    "display": "水果",
+    "tags": [
+      "#c:foods/fruit"
+    ],
+    "names": [
+      "(apple|pear|peach|plum|cherry|orange|lemon|banana|mango|pineapple|melon|watermelon|grape|kiwi|papaya|coconut)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "berry": {
+    "display": "浆果",
+    "tags": [
+      "#c:foods/berry"
+    ],
+    "names": [
+      "berries$",
+      "berry$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "nut": {
+    "display": "坚果",
+    "tags": [],
+    "names": [
+      "(almond|walnut|hazelnut|pecan|peanut|cashew|pistachio|nut)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "seed": {
+    "display": "种子",
+    "tags": [
+      "#c:seeds"
+    ],
+    "names": [
+      "_seeds?$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.2
+  },
+  "mushroom": {
+    "display": "菌菇",
+    "tags": [
+      "#c:mushrooms",
+      "#c:foods/mushroom"
+    ],
+    "names": [
+      "(mushroom|fungus|shroom|truffle)"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "raw_meat": {
+    "display": "生肉",
+    "tags": [
+      "#c:foods/raw_meat"
+    ],
+    "names": [
+      "raw_(beef|pork|chicken|mutton|rabbit|venison|meat)",
+      "(:|^)(beef|pork|mutton|chicken|rabbit)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.6
+  },
+  "fish": {
+    "display": "鱼",
+    "tags": [
+      "#c:foods/raw_fish",
+      "#minecraft:fishes"
+    ],
+    "names": [
+      "(cod|salmon|tropical_fish|pufferfish|_fish)$"
+    ],
+    "exclude": [
+      "cooked",
+      "_cooked",
+      "cooked_"
+    ],
+    "price": 0.6
+  },
+  "aquatic": {
+    "display": "水产",
+    "tags": [],
+    "names": [
+      "(kelp|seaweed|pearl|shell|clam|oyster|coral|urchin|shrimp|crab|lobster|squid)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "game": {
+    "display": "野味",
+    "tags": [],
+    "names": [
+      "(venison|boar|pheasant|quail|frog_leg|game_meat)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.8
+  },
+  "egg": {
+    "display": "蛋",
+    "tags": [
+      "#c:eggs"
+    ],
+    "names": [
+      "_egg$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "milk": {
+    "display": "奶",
+    "tags": [
+      "#c:milk_buckets",
+      "#c:drinks/milk"
+    ],
+    "names": [
+      "milk"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.8
+  },
+  "hide": {
+    "display": "生皮",
+    "tags": [],
+    "names": [
+      "(hide|pelt)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.6
+  },
+  "leather": {
+    "display": "皮革",
+    "tags": [
+      "#c:leathers"
+    ],
+    "names": [
+      "leather$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.8
+  },
+  "wool": {
+    "display": "羊毛",
+    "tags": [
+      "#minecraft:wool",
+      "#c:wool"
+    ],
+    "names": [
+      "_wool$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "fiber": {
+    "display": "纤维",
+    "tags": [
+      "#c:strings"
+    ],
+    "names": [
+      "(string|thread|fibre|fiber|rope|twine|sinew|cord)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "log": {
+    "display": "原木",
+    "tags": [
+      "#minecraft:logs"
+    ],
+    "names": [
+      "(_log|_stem|_wood|_hyphae)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "plank": {
+    "display": "木板",
+    "tags": [
+      "#minecraft:planks",
+      "#c:planks"
+    ],
+    "names": [
+      "_planks$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.25
+  },
+  "sapling": {
+    "display": "树苗",
+    "tags": [
+      "#minecraft:saplings",
+      "#c:saplings"
+    ],
+    "names": [
+      "_sapling$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "flower": {
+    "display": "花卉",
+    "tags": [
+      "#minecraft:small_flowers",
+      "#minecraft:flowers",
+      "#c:flowers",
+      "#c:flowers/small",
+      "#c:flowers/tall"
+    ],
+    "names": [
+      "(_flower|_blossom|_tulip|_rose|_orchid|_daisy|_poppy|_dandelion|_allium|_cornflower|_sunflower|_lilac|_peony|_azalea)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "plant": {
+    "display": "草木",
+    "tags": [
+      "#minecraft:leaves",
+      "#c:leaves"
+    ],
+    "names": [
+      "(leaves|fern|grass|bush|vine|moss|lily_pad|cactus|reed|kelp|seaweed|roots|sprouts)$",
+      "(_bamboo|:bamboo)$"
+    ],
+    "exclude": [
+      "#tradepost:decor",
+      "cannon_boat"
+    ],
+    "price": 0.25
+  },
+  "potted": {
+    "display": "盆栽",
+    "tags": [
+      "#minecraft:flower_pots"
+    ],
+    "names": [
+      ":potted_"
+    ],
+    "exclude": [],
+    "price": 0.6
+  },
+  "station": {
+    "display": "灶具",
+    "tags": [],
+    "names": [
+      "(millstone|steamer|stockpot|chopping_board|cutting_board|cooking_pot|oil_pot|teapot|stove|pressing_tub)$",
+      ":(pot|barrel)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 2
+  },
+  "stone": {
+    "display": "石料",
+    "tags": [
+      "#c:stones",
+      "#c:cobblestones"
+    ],
+    "names": [
+      "(cobblestone|deepslate|andesite|diorite|granite|tuff|basalt|netherrack|stone)$"
+    ],
+    "exclude": [
+      "#tradepost:decor",
+      "millstone"
+    ],
+    "price": 0.35
+  },
+  "sand": {
+    "display": "沙",
+    "tags": [
+      "#c:sands",
+      "#c:sand"
+    ],
+    "names": [
+      "_sand$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.25
+  },
+  "clay": {
+    "display": "黏土",
+    "tags": [
+      "#c:clay_balls"
+    ],
+    "names": [
+      "clay$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "gravel": {
+    "display": "砾石",
+    "tags": [
+      "#c:gravels"
+    ],
+    "names": [
+      "gravel$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.25
+  },
+  "ore": {
+    "display": "原矿",
+    "tags": [
+      "#c:ores"
+    ],
+    "names": [
+      "_ore$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1.5
+  },
+  "raw_ore": {
+    "display": "粗矿",
+    "tags": [
+      "#c:raw_materials"
+    ],
+    "names": [
+      "^raw_|:raw_"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1.2
+  },
+  "ingot": {
+    "display": "金属锭",
+    "tags": [
+      "#c:ingots"
+    ],
+    "names": [
+      "_ingot$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1
+  },
+  "nugget": {
+    "display": "金属粒",
+    "tags": [
+      "#c:nuggets"
+    ],
+    "names": [
+      "_nugget$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.15
+  },
+  "dust": {
+    "display": "粉",
+    "tags": [
+      "#c:dusts"
+    ],
+    "names": [
+      "_dust$"
+    ],
+    "exclude": [
+      "#tradepost:decor",
+      "fairy_dust$"
+    ],
+    "price": 0.6
+  },
+  "gem": {
+    "display": "宝石",
+    "tags": [
+      "#c:gems"
+    ],
+    "names": [
+      "(diamond|lapis|amethyst|ruby|sapphire|topaz|jade|quartz|opal|onyx|peridot)$"
+    ],
+    "exclude": [
+      "emerald"
+    ],
+    "price": 3
+  },
+  "redstone": {
+    "display": "红石",
+    "tags": [],
+    "names": [
+      "redstone"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "coal": {
+    "display": "煤",
+    "tags": [
+      "#c:coal"
+    ],
+    "names": [
+      "(^|:)(coal|charcoal)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.2
+  },
+  "charcoal": {
+    "display": "木炭",
+    "tags": [],
+    "names": [
+      "charcoal"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.2
+  },
+  "glass": {
+    "display": "玻璃",
+    "tags": [
+      "#c:glass_blocks"
+    ],
+    "names": [
+      "_glass$"
+    ],
+    "exclude": [
+      "_pane",
+      "stained",
+      "tinted"
+    ],
+    "price": 0.4
+  },
+  "brick": {
+    "display": "砖",
+    "tags": [
+      "#c:bricks"
+    ],
+    "names": [
+      "brick"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "pottery": {
+    "display": "陶器",
+    "tags": [],
+    "names": [
+      "(pot|amphora|vase|urn|jar)$"
+    ],
+    "exclude": [
+      "flower_pot",
+      "_jar$"
+    ],
+    "price": 1.5
+  },
+  "dye": {
+    "display": "染料",
+    "tags": [
+      "#c:dyes"
+    ],
+    "names": [
+      "_dye$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "brew": {
+    "display": "酒",
+    "tags": [],
+    "names": [
+      "(beer|ale|wine|mead|cider|whisky|whiskey|vodka|rum|sake|brew|liquor|brandy|gin)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1.2
+  },
+  "potion": {
+    "display": "药水",
+    "tags": [],
+    "names": [
+      "potion|elixir"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 2
+  },
+  "food": {
+    "display": "食品",
+    "tags": [
+      "#c:foods"
+    ],
+    "names": [],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "book": {
+    "display": "书",
+    "tags": [],
+    "names": [
+      "(^|:)(book|writable_book|written_book|guide_book)$",
+      "_book$"
+    ],
+    "exclude": [
+      "enchanted_book"
+    ],
+    "price": 1
+  },
+  "paper": {
+    "display": "纸",
+    "tags": [],
+    "names": [
+      "paper"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "ink": {
+    "display": "墨",
+    "tags": [],
+    "names": [
+      "ink_sac",
+      "_ink$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.6
+  },
+  "enchanted_book": {
+    "display": "附魔书",
+    "tags": [],
+    "names": [
+      "enchanted_book"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ]
+  },
+  "map": {
+    "display": "地图",
+    "tags": [],
+    "names": [
+      "(^|:)map$",
+      "filled_map",
+      "_map$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1
+  },
+  "tool": {
+    "display": "工具",
+    "tags": [
+      "#c:tools"
+    ],
+    "names": [
+      "(_pickaxe|_axe|_shovel|_hoe|_shears|_saw|_hammer|_wrench|_drill|crowbar|_prybar|_screwdriver|fishing_rod|grappling_hook)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ]
+  },
+  "weapon": {
+    "display": "武器",
+    "tags": [
+      "#c:swords"
+    ],
+    "names": [
+      "(_sword|_dagger|_spear|_katana|_mace|_trident|_halberd|_knife|cannon)$"
+    ],
+    "exclude": [
+      "#tradepost:decor",
+      "kitchen_knife$",
+      "_cleaver$"
+    ]
+  },
+  "armor": {
+    "display": "护甲",
+    "tags": [
+      "#c:armors"
+    ],
+    "names": [
+      "(helmet|chestplate|leggings|boots|_armor)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ]
+  },
+  "shield": {
+    "display": "盾",
+    "tags": [],
+    "names": [
+      "shield$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ]
+  },
+  "ammo": {
+    "display": "箭矢",
+    "tags": [],
+    "names": [
+      "(arrow|bolt|bullet|_arrows|cannonball)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.3
+  },
+  "part": {
+    "display": "零件",
+    "tags": [],
+    "names": [
+      "(gear|wheel|engine|frame|sail|propeller|boiler|axle|chassis|bearing|shaft|cog)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.8
+  },
+  "vehicle": {
+    "display": "载具",
+    "tags": [],
+    "names": [
+      "(cart|wagon|carriage|rowboat|sailboat|frigate|airship|aircraft|biplane|gyrodyne|automobile|quad|motorcycle|_boat|_raft)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 3
+  },
+  "block_9x": {
+    "display": "压缩块",
+    "tags": [
+      "#c:storage_blocks"
+    ],
+    "names": [],
+    "exclude": [
+      "#tradepost:decor"
+    ]
+  },
+  "bottle": {
+    "display": "玻璃瓶",
+    "tags": [],
+    "names": [
+      "glass_bottle",
+      "_bottle$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.4
+  },
+  "sundry": {
+    "display": "杂货",
+    "tags": [],
+    "names": [
+      "(bucket|rope|torch|lantern|compass|clock|shears|flint_and_steel|lead|name_tag)$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 0.5
+  },
+  "catalyst": {
+    "display": "催化剂",
+    "tags": [],
+    "names": [
+      "(_catalyst|_reagent|_flux)$",
+      "fairy_dust$"
+    ],
+    "exclude": [
+      "#tradepost:decor"
+    ],
+    "price": 1
+  },
+  "misc": {
+    "display": "杂项",
+    "tags": [],
+    "names": [],
+    "exclude": []
+  },
+  "pottery_sherd": {
+    "display": "陶片",
+    "tags": [],
+    "names": [
+      "_sherd$"
+    ],
+    "exclude": [],
+    "price": 1.0
+  },
+  "kaolin": {
+    "display": "高岭土",
+    "tags": [],
+    "names": [
+      "kaolin"
+    ],
+    "exclude": [],
+    "price": 0.8
+  },
+  "crystal": {
+    "display": "晶簇",
+    "tags": [],
+    "names": [
+      "_cluster$",
+      "_crystal$",
+      "_geode$",
+      "_budding_"
+    ],
+    "exclude": [],
+    "price": 1.5
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "herding",
+  "display": "畜牧",
+  "supply": [
+    "@raw_meat",
+    "@hide",
+    "@wool",
+    "@egg",
+    "@milk"
+  ],
+  "demand": [
+    "@grain",
+    "@tuber",
+    "@fiber"
+  ],
+  "biome_weights": {
+    "#c:is_plains": 3,
+    "#c:is_savanna": 2,
+    "default": 1
+  }
+}

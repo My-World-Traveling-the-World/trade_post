@@ -1,0 +1,24 @@
+{
+  "id": "commerce",
+  "display": "商贸",
+  "supply": [
+    "@bottle",
+    "@block_9x",
+    "minecraft:paper",
+    "minecraft:book",
+    "minecraft:map",
+    "@catalyst",
+    "@misc",
+    "@sundry"
+  ],
+  "demand": [
+    "minecraft:gold_ingot",
+    "minecraft:ink_sac",
+    "@bottle"
+  ],
+  "biome_weights": {
+    "#c:is_plains": 2,
+    "#c:is_beach": 2,
+    "#minecraft:is_overworld": 1
+  }
+}

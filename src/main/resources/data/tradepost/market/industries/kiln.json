@@ -1,0 +1,20 @@
+{
+  "id": "kiln",
+  "display": "窑业",
+  "supply": [
+    "@brick",
+    "@pottery",
+    "@glass"
+  ],
+  "demand": [
+    "@clay",
+    "@sand",
+    "@coal"
+  ],
+  "biome_weights": {
+    "#c:is_badlands": 4,
+    "#c:is_beach": 2,
+    "#c:is_desert": 2,
+    "default": 1
+  }
+}

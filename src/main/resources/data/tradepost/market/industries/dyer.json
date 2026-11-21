@@ -1,0 +1,18 @@
+{
+  "id": "dyer",
+  "display": "染坊",
+  "supply": [
+    "@dye",
+    "@bottle",
+    "@fiber"
+  ],
+  "demand": [
+    "@fiber",
+    "@clay",
+    "@glass",
+    "minecraft:water_bucket"
+  ],
+  "biome_weights": {
+    "default": 1
+  }
+}

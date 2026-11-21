@@ -1,0 +1,22 @@
+{
+  "id": "cookery",
+  "display": "灶房",
+  "supply": [
+    "@food",
+    "@station",
+    "@raw_meat"
+  ],
+  "demand": [
+    "@raw_meat",
+    "@fish",
+    "@vegetable",
+    "@grain",
+    "@milk",
+    "@egg"
+  ],
+  "biome_weights": {
+    "#c:is_plains": 3,
+    "#minecraft:is_forest": 2,
+    "default": 1
+  }
+}

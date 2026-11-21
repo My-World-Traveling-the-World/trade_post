@@ -1,0 +1,17 @@
+{
+  "id": "diamond_cache",
+  "item": "minecraft:diamond",
+  "count": 8,
+  "cost": [
+    {
+      "tag": "#c:ingots",
+      "value": 45
+    },
+    {
+      "item": "minecraft:coal_block",
+      "value": 35
+    }
+  ],
+  "weight": 14,
+  "value_multiplier": 6
+}

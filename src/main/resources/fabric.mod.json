@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "tradepost",
+  "version": "${version}",
+  "name": "Trade Post",
+  "description": "跑商：村庄产业、特产、动态价格，以及村庄里的驿站。",
+  "authors": ["guoke"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "jade": ["dev.guoke.tradepost.client.jade.TradepostJadePlugin"],
+    "main": ["dev.guoke.tradepost.Tradepost"],
+    "client": ["dev.guoke.tradepost.client.TradepostClient"]
+  },
+  "mixins": ["tradepost.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "farming",
+  "display": "农耕",
+  "supply": [
+    "@grain",
+    "@tuber",
+    "@vegetable",
+    "@seed",
+    "minecraft:hay_block"
+  ],
+  "demand": [
+    "minecraft:bone_meal",
+    "@fiber",
+    "@clay"
+  ],
+  "biome_weights": {
+    "#minecraft:is_overworld": 1,
+    "#c:is_plains": 3
+  }
+}

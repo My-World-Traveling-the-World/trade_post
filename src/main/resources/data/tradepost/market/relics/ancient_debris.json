@@ -1,0 +1,17 @@
+{
+  "id": "ancient_debris",
+  "item": "minecraft:ancient_debris",
+  "count": 1,
+  "cost": [
+    {
+      "tag": "#c:ingots",
+      "value": 20
+    },
+    {
+      "item": "minecraft:obsidian",
+      "value": 10
+    }
+  ],
+  "weight": 6,
+  "value_multiplier": 18
+}

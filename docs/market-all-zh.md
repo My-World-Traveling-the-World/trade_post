@@ -1,0 +1,1280 @@
+# 跑商 · 全部商品价格表（中文）
+
+- 数据来源：`/home/guoke/mc-linux/versions/WAYFARING1.7.0-dev/config/tradepost/market`（外部目录优先，改完 `/tradepost reload` 生效）
+- 物品 1257 条：手写价 94 条 + 标签价 1163 条
+- 买入 = 基础价 × 0.85，卖出 = 基础价 × 1.18（半仓、无村癖、无行情、非集市日的中位价）
+- 基础价已含：标签基价 × 食物 4 倍（可食用才算）。不含稀有度倍率（普通×1 / 罕见×2 / 稀有×5 / 史诗×15）——稀有度离线读不到，进游戏 `/tradepost dump` 才是准的
+- 库存上限 = clamp(round(512 / 基础价), 16, 2048)，驿站 ×2；**模组食物（走标签价/配方价、没有手写价的可食用物品）一律压到 64**，原版手写价食物不受影响
+- 实际成交价再乘：繁荣度（买 T1 ×1.15 / T3 ×0.92，卖反过来）× 村癖 ±12% × 每日行情 ±10% × 库存曲线（买 0.55–1.45 / 卖 0.68–1.33）× 集市日（卖 ×1.35）
+
+## 判断口径
+
+| 结论 | 成交价 ÷ 基础价 |
+|---|---|
+| 便宜，值得囤 | < 0.6 |
+| 正常 | 0.6 – 1.0 |
+| 别买 | > 1.1 |
+| 卖得好 | > 1.3 |
+| 赶紧出手 | > 1.6 |
+
+## 全部商品（按基础价从高到低）
+
+| 中文名 | 物品 id | 基础价 | 买入 | 卖出 | 村库存 | 驿库存 | 食物 | 本村产 | 本村收 | 来源 | 备注 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 不死图腾 | `minecraft:totem_of_undying` | 200 | 170 | 236 | 16 | 32 |  | - | - | 手写价 |  |
+| 下界合金锭 | `minecraft:netherite_ingot` | 180 | 153 | 212.4 | 16 | 32 |  | - | - | 手写价 |  |
+| 附魔金苹果 | `minecraft:enchanted_golden_apple` | 120 | 102 | 141.6 | 16 | 32 | 是 | auto_foods、cookery | banquet | 手写价 |  |
+| 绿宝石块 | `minecraft:emerald_block` | 100 | 85 | 118 | 16 | 32 |  | commerce | - | 手写价 |  |
+| 远古残骸 | `minecraft:ancient_debris` | 60 | 51 | 70.8 | 16 | 32 |  | - | - | 手写价 |  |
+| 金块 | `minecraft:gold_block` | 28.8 | 24.48 | 33.984 | 18 | 36 |  | - | - | 手写价 |  |
+| 钻石 | `minecraft:diamond` | 24 | 20.4 | 28.32 | 21 | 42 |  | - | - | 手写价 |  |
+| 附魔书 | `minecraft:enchanted_book` | 20 | 17 | 23.6 | 26 | 52 |  | scholar | - | 手写价 |  |
+| 金苹果 | `minecraft:golden_apple` | 18 | 15.3 | 21.24 | 28 | 56 | 是 | auto_foods、cookery | banquet | 手写价 |  |
+| 铁块 | `minecraft:iron_block` | 18 | 15.3 | 21.24 | 28 | 56 |  | - | - | 手写价 |  |
+| 绿宝石 | `minecraft:emerald` | 12 | 10.2 | 14.16 | 43 | 86 |  | gems | commerce | 手写价 |  |
+| 命名牌 | `minecraft:name_tag` | 12 | 10.2 | 14.16 | 43 | 86 |  | - | - | 手写价 |  |
+| 铁胸甲 | `minecraft:iron_chestplate` | 11 | 9.35 | 12.98 | 47 | 94 |  | armory | - | 手写价 |  |
+| 绒球葱方块 | `biomeswevegone:allium_petal_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 粉色绒球葱方块 | `biomeswevegone:pink_allium_petal_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 玫瑰花瓣方块 | `biomeswevegone:rose_petal_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 白色绒球葱方块 | `biomeswevegone:white_allium_petal_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 贝壳块 | `ecologics:seashell_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| ? | `ends_delight:chorus_fruit_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装甜菜根 | `farmersdelight:beetroot_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装卷心菜 | `farmersdelight:cabbage_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装胡萝卜 | `farmersdelight:carrot_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装洋葱 | `farmersdelight:onion_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装马铃薯 | `farmersdelight:potato_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 袋装稻米 | `farmersdelight:rice_bag` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 稻穗捆 | `farmersdelight:rice_bale` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 草捆 | `farmersdelight:straw_bale` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装番茄 | `farmersdelight:tomato_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 弩 | `minecraft:crossbow` | 8 | 6.8 | 9.44 | 64 | 128 |  | armory | - | 手写价 |  |
+| 箱装绿甜椒 | `rusticdelight:bell_pepper_green_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装红甜椒 | `rusticdelight:bell_pepper_red_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 袋装甜椒种子 | `rusticdelight:bell_pepper_seeds_bag` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装黄甜椒 | `rusticdelight:bell_pepper_yellow_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 袋装咖啡豆 | `rusticdelight:coffee_beans_bag` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装棉铃 | `rusticdelight:cotton_boll_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 袋装棉花种子 | `rusticdelight:cotton_seeds_bag` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 袋装烘焙咖啡豆 | `rusticdelight:roasted_coffee_beans_bag` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装姜 | `snowyspirit:ginger_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 羽毛块 | `supplementaries:feather_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 亚麻捆 | `supplementaries:flax_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 燧石块 | `supplementaries:flint_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 肥皂块 | `supplementaries:soap_block` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 糖块 | `supplementaries:sugar_cube` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装大蒜 | `ubesdelight:garlic_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装生姜 | `ubesdelight:ginger_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装香茅 | `ubesdelight:lemongrass_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 箱装香芋 | `ubesdelight:ube_crate` | 8 | 6.8 | 9.44 | 64 | 128 |  | auto_storage_blocks | - | 标签 #c:storage_blocks |  |
+| 末影珍珠 | `minecraft:ender_pearl` | 7 | 5.95 | 8.26 | 73 | 146 |  | - | - | 手写价 |  |
+| 烈焰棒 | `minecraft:blaze_rod` | 5 | 4.25 | 5.9 | 102 | 204 |  | - | - | 手写价 |  |
+| 铁镐 | `minecraft:iron_pickaxe` | 4.4 | 3.74 | 5.192 | 116 | 232 |  | - | gems | 手写价 |  |
+| ? | `pureamethysttools:pure_amethyst` | 4 | 3.4 | 4.72 | 128 | 256 |  | gems | - | 标签 #c:gems |  |
+| 悬垂彩虹水晶 | `regions_unexplored:hanging_prismarite` | 4 | 3.4 | 4.72 | 128 | 256 |  | gems | - | 标签 #c:gems |  |
+| 大型彩虹水晶簇 | `regions_unexplored:large_prismarite_cluster` | 4 | 3.4 | 4.72 | 128 | 256 |  | gems | - | 标签 #c:gems |  |
+| 彩虹水晶簇 | `regions_unexplored:prismarite_cluster` | 4 | 3.4 | 4.72 | 128 | 256 |  | gems | - | 标签 #c:gems |  |
+| 煤炭块 | `minecraft:coal_block` | 3.2 | 2.72 | 3.776 | 160 | 320 |  | coal | - | 手写价 |  |
+| 金锭 | `minecraft:gold_ingot` | 3.2 | 2.72 | 3.776 | 160 | 320 |  | smelting | commerce、scholar | 手写价 |  |
+| 紫水晶碎片 | `minecraft:amethyst_shard` | 3 | 2.55 | 3.54 | 171 | 342 |  | gems | - | 手写价 |  |
+| 药水 | `minecraft:potion` | 3 | 2.55 | 3.54 | 171 | 342 |  | brewing | - | 手写价 |  |
+| 盾牌 | `minecraft:shield` | 3 | 2.55 | 3.54 | 171 | 342 |  | armory | - | 手写价 |  |
+| 铁剑 | `minecraft:iron_sword` | 2.8 | 2.38 | 3.304 | 183 | 366 |  | armory | - | 手写价 |  |
+| 青金石 | `minecraft:lapis_lazuli` | 2.4 | 2.04 | 2.832 | 213 | 426 |  | gems | - | 手写价 |  |
+| 铁锭 | `minecraft:iron_ingot` | 2 | 1.7 | 2.36 | 256 | 512 |  | smelting | armory、backwater、coal、forestry、gems | 手写价 |  |
+| 黑曜石 | `minecraft:obsidian` | 2 | 1.7 | 2.36 | 256 | 512 |  | - | - | 手写价 |  |
+| 奇异洋葱汤 | `biomeswevegone:allium_oddion_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 芦荟汁 | `biomeswevegone:aloe_vera_juice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 猴面包果 | `biomeswevegone:baobab_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 蓝莓 | `biomeswevegone:blueberries` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蓝莓派 | `biomeswevegone:blueberry_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟奇异洋葱 | `biomeswevegone:cooked_oddion_bulb` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟白色马勃菌菌盖 | `biomeswevegone:cooked_white_puffball_cap` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟丝兰果 | `biomeswevegone:cooked_yucca_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 青苹果 | `biomeswevegone:green_apple` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 青苹果派 | `biomeswevegone:green_apple_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 灵魂果 | `biomeswevegone:soul_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 白色马勃菌煲 | `biomeswevegone:white_puffball_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 丝兰果 | `biomeswevegone:yucca_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| ? | `culturaldelights:glow_squid` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `culturaldelights:raw_calamari` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `culturaldelights:squid` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 椰子片 | `ecologics:coconut_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟仙人掌果 | `ecologics:cooked_prickly_pear` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 蟹肉 | `ecologics:crab_meat` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 仙人掌果 | `ecologics:prickly_pear` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 热带炖菜 | `ecologics:tropical_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 核桃 | `ecologics:walnut` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 苹果派 | `farmersdelight:apple_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 苹果派切片 | `farmersdelight:apple_pie_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生培根 | `farmersdelight:bacon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 培根蛋 | `farmersdelight:bacon_and_eggs` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 培根三明治 | `farmersdelight:bacon_sandwich` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烘焙鳕鱼炖 | `farmersdelight:baked_cod_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烧烤串 | `farmersdelight:barbecue_stick` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 牛肉饼 | `farmersdelight:beef_patty` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 牛肉炖 | `farmersdelight:beef_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 大骨汤 | `farmersdelight:bone_broth` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 卷心菜卷 | `farmersdelight:cabbage_rolls` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蛋糕切片 | `farmersdelight:cake_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生鸡肉丁 | `farmersdelight:chicken_cuts` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鸡肉三明治 | `farmersdelight:chicken_sandwich` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鸡肉汤 | `farmersdelight:chicken_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 巧克力派 | `farmersdelight:chocolate_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 巧克力派切片 | `farmersdelight:chocolate_pie_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鳕鱼寿司 | `farmersdelight:cod_roll` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生鳕鱼片 | `farmersdelight:cod_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 熟培根 | `farmersdelight:cooked_bacon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鸡肉丁 | `farmersdelight:cooked_chicken_cuts` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鳕鱼片 | `farmersdelight:cooked_cod_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟羊排 | `farmersdelight:cooked_mutton_chops` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 米饭 | `farmersdelight:cooked_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鲑鱼片 | `farmersdelight:cooked_salmon_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 狗粮 | `farmersdelight:dog_food` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 饺子 | `farmersdelight:dumplings` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 夹蛋三明治 | `farmersdelight:egg_sandwich` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鱼肉炖 | `farmersdelight:fish_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 煎蛋 | `farmersdelight:fried_egg` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 炒饭 | `farmersdelight:fried_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 水果沙拉 | `farmersdelight:fruit_salad` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 碗装闪亮沙拉 | `farmersdelight:gleaming_salad` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 闪亮沙拉 | `farmersdelight:gleaming_salad_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 发光浆果蛋奶沙司 | `farmersdelight:glow_berry_custard` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香烤鲑鱼 | `farmersdelight:grilled_salmon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 火腿 | `farmersdelight:ham` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 汉堡包 | `farmersdelight:hamburger` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蜂蜜曲奇 | `farmersdelight:honey_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 盘装蜜汁火腿 | `farmersdelight:honey_glazed_ham` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蜜汁火腿 | `farmersdelight:honey_glazed_ham_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 海带寿司卷 | `farmersdelight:kelp_roll` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 海带寿司 | `farmersdelight:kelp_roll_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 西瓜冰棍 | `farmersdelight:melon_popsicle` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 牛肉馅 | `farmersdelight:minced_beef` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 混合沙拉 | `farmersdelight:mixed_salad` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蘑菇饭 | `farmersdelight:mushroom_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生羊排 | `farmersdelight:mutton_chops` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 羊肉卷饼 | `farmersdelight:mutton_wrap` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 下界沙拉 | `farmersdelight:nether_salad` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 面条汤 | `farmersdelight:noodle_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 洋葱汤 | `farmersdelight:onion_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 肉丸意面 | `farmersdelight:pasta_with_meatballs` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 羊排意面 | `farmersdelight:pasta_with_mutton_chop` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 馅饼酥皮 | `farmersdelight:pie_crust` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 南瓜派切片 | `farmersdelight:pumpkin_pie_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 南瓜片 | `farmersdelight:pumpkin_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 南瓜汤 | `farmersdelight:pumpkin_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蔬菜杂烩 | `farmersdelight:ratatouille` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生意面 | `farmersdelight:raw_pasta` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 寿司拼盘 | `farmersdelight:rice_roll_medley_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 盘装烤鸡 | `farmersdelight:roast_chicken` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烤鸡 | `farmersdelight:roast_chicken_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烤羊排 | `farmersdelight:roasted_mutton_chops` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鲑鱼寿司 | `farmersdelight:salmon_roll` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生鲑鱼片 | `farmersdelight:salmon_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 盘装牧羊人派 | `farmersdelight:shepherds_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 牧羊人派 | `farmersdelight:shepherds_pie_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烟熏火腿 | `farmersdelight:smoked_ham` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鱿鱼墨面 | `farmersdelight:squid_ink_pasta` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 牛排配马铃薯 | `farmersdelight:steak_and_potatoes` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 填馅马铃薯 | `farmersdelight:stuffed_potato` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 碗装填馅南瓜 | `farmersdelight:stuffed_pumpkin` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 填馅南瓜 | `farmersdelight:stuffed_pumpkin_block` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 甜浆果芝士派 | `farmersdelight:sweet_berry_cheesecake` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 甜浆果芝士派切片 | `farmersdelight:sweet_berry_cheesecake_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 甜浆果曲奇 | `farmersdelight:sweet_berry_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 番茄酱 | `farmersdelight:tomato_sauce` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蔬菜面 | `farmersdelight:vegetable_noodles` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蔬菜汤 | `farmersdelight:vegetable_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 面团 | `farmersdelight:wheat_dough` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `galosphere:golden_lichen_cordyceps` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `galosphere:lichen_cordyceps` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `galosphere:preserved_flesh` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `galosphere:salted_jerky` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟牛杂 | `kaleidoscope_cookery:cooked_cow_offal` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟羊排 | `kaleidoscope_cookery:cooked_lamb_chops` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟五花肉 | `kaleidoscope_cookery:cooked_pork_belly` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生牛杂 | `kaleidoscope_cookery:raw_cow_offal` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生羊排 | `kaleidoscope_cookery:raw_lamb_chops` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生五花肉 | `kaleidoscope_cookery:raw_pork_belly` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 烤马铃薯 | `minecraft:baked_potato` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 甜菜汤 | `minecraft:beetroot_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 书架 | `minecraft:bookshelf` | 1.6 | 1.36 | 1.888 | 320 | 640 |  | scholar | - | 手写价 |  |
+| 蛋糕 | `minecraft:cake` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生鸡肉 | `minecraft:chicken` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 紫颂果 | `minecraft:chorus_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 牛排 | `minecraft:cooked_beef` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鸡肉 | `minecraft:cooked_chicken` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鳕鱼 | `minecraft:cooked_cod` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟羊肉 | `minecraft:cooked_mutton` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟猪排 | `minecraft:cooked_porkchop` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟兔肉 | `minecraft:cooked_rabbit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鲑鱼 | `minecraft:cooked_salmon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 曲奇 | `minecraft:cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 干海带 | `minecraft:dried_kelp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 西瓜片 | `minecraft:melon_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 蘑菇煲 | `minecraft:mushroom_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 不祥之瓶 | `minecraft:ominous_bottle` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 毒马铃薯 | `minecraft:poisonous_potato` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生猪排 | `minecraft:porkchop` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 河豚 | `minecraft:pufferfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 南瓜派 | `minecraft:pumpkin_pie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 兔肉煲 | `minecraft:rabbit_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蜘蛛眼 | `minecraft:spider_eye` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 谜之炖菜 | `minecraft:suspicious_stew` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 热带鱼 | `minecraft:tropical_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `miners_delight:glow_squid` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `miners_delight:squid` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `miners_delight:tentacles` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| ? | `pureemeraldtools:emerald_carrot` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| ? | `regions_unexplored:hanging_earlight_fruit` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| ? | `regions_unexplored:salmonberry` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 绿甜椒片 | `rusticdelight:bell_pepper_slice_green` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 红甜椒片 | `rusticdelight:bell_pepper_slice_red` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 黄甜椒片 | `rusticdelight:bell_pepper_slice_yellow` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、cookery | banquet | 标签 #c:foods |  |
+| 甜椒汤 | `rusticdelight:bell_pepper_soup` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生鱿鱼 | `rusticdelight:calamari` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 生鱿鱼片 | `rusticdelight:calamari_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 樱花饼干 | `rusticdelight:cherry_blossom_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 咖啡曲奇 | `rusticdelight:coffee_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鱿鱼 | `rusticdelight:cooked_calamari` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鱿鱼片 | `rusticdelight:cooked_calamari_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 糖浆曲奇 | `rusticdelight:syrup_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 拐杖糖 | `snowyspirit:candy_cane` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蛋奶酒 | `snowyspirit:eggnog` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 姜饼曲奇 | `snowyspirit:gingerbread_cookie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 糖果 | `supplementaries:candy` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 松饼 | `supplementaries:pancake` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 深层鮟鱇鱼 | `tide:abyss_angler` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 始祖鱼 | `tide:alpha_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 琥珀岩鱼 | `tide:amber_rockfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鳀鱼 | `tide:anchovy` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 神仙鱼 | `tide:angelfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鮟鱇鱼 | `tide:anglerfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 巨骨舌鱼 | `tide:arapaima` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 基岩虫 | `tide:bedrock_bug` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 基岩脂鲤 | `tide:bedrock_tetra` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 黑莓鲈 | `tide:black_crappie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 花鲈 | `tide:blossom_bass` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 蓝色霓虹鱼 | `tide:blue_neonfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 蓝鳃太阳鱼 | `tide:bluegill` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 溪鳟 | `tide:brook_trout` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 公牛鲨 | `tide:bull_shark` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鲤鱼 | `tide:carp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鲶鱼 | `tide:catfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 穴爬鱼 | `tide:cave_crawler` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 穴鳗 | `tide:cave_eel` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 裂隙鳗 | `tide:chasm_eel` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 腔棘鱼 | `tide:coelacanth` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 熟鱼 | `tide:cooked_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 熟鱼片 | `tide:cooked_fish_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 晶虾 | `tide:crystal_shrimp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 晶鲤 | `tide:crystalline_carp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 黑暗吞食者 | `tide:darkness_eater` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 深邃之蓝 | `tide:deep_blue` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 深层石斑鱼 | `tide:deep_grouper` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 魔鳉 | `tide:devils_hole_pupfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 龙鱼 | `tide:dragon_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods | 黑名单：关键词 dragon |
+| 滴水石镖鲈 | `tide:dripstone_darter` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 飞翔荷兰人的袜子 | `tide:dutchman_sock` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 回响鲷鱼 | `tide:echo_snapper` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鞘翅鳟 | `tide:elytrout` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 末影滑翔者 | `tide:ender_glider` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 末影鳍鱼 | `tide:enderfin` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 末影凝视者 | `tide:endergazer` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 生鱼片 | `tide:fish_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 比目鱼 | `tide:flounder` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 霜冻比目鱼 | `tide:frostbite_flounder` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 金鲦鱼 | `tide:gilded_minnow` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 荧光鱼 | `tide:glowfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 大白鲨 | `tide:great_white_shark` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 烤金枪鱼 | `tide:grilled_tuna` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 孔雀鱼 | `tide:guppy` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 白炽幼虫 | `tide:incandescent_larva` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 铁脂鲤 | `tide:iron_tetra` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 审判之鱼 | `tide:judgment_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 青金灯笼鱼 | `tide:lapis_lanternfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 大份熟鱼 | `tide:large_cooked_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 大口黑鲈 | `tide:largemouth_bass` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 夜光水母 | `tide:luminescent_jellyfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鲭鱼 | `tide:mackerel` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鲯鳅 | `tide:mahi_mahi` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 蝠鲼 | `tide:manta_ray` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 蝠飞龙 | `tide:mantyvern` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 火星螺 | `tide:marstilus` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 点金鱼 | `tide:midas_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 幻影鲶鱼 | `tide:mirage_catfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 月眼鱼 | `tide:mooneye` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 肾形畸鲶 | `tide:nephrosilu` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 海王鲤 | `tide:neptune_koi` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 海鲈 | `tide:ocean_perch` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 苍白棒鱼 | `tide:pale_clubfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 五足章鱼 | `tide:pentapus` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 狗鱼 | `tide:pike` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 冥王海螺 | `tide:pluto_snail` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 虹鳟 | `tide:rainbow_trout` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 诱惑红40号 | `tide:red_40` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 红鲷鱼 | `tide:red_snapper` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 旗鱼 | `tide:sailfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods | 黑名单：标签 |
+| 沙虎鲨 | `tide:sand_tiger_shark` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 土星乌贼 | `tide:saturn_cuttlefish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 暗影鲨 | `tide:shadow_shark` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 暗影鲷鱼 | `tide:shadow_snapper` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 嗜睡鲤 | `tide:sleepy_carp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 黏液鲑鱼 | `tide:slimy_salmon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 小份熟鱼 | `tide:small_cooked_fish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 小口黑鲈 | `tide:smallmouth_bass` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 劫掠鱿鱼 | `tide:snatcher_squid` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 锯盖鱼 | `tide:snook` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 孢子追踪者 | `tide:spore_stalker` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鲟鱼 | `tide:sturgeon` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 烈阳徽章水母 | `tide:sun_emblem` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 剑鱼 | `tide:swordfish` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods | 黑名单：标签 |
+| 金枪鱼 | `tide:tuna` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 天王双鱼 | `tide:uranias_pisces` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 怨鳞 | `tide:vengeance` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 紫鲤 | `tide:violet_carp` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 玻璃梭鲈 | `tide:walleye` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 白莓鲈 | `tide:white_crappie` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 疾风鲈 | `tide:windbass` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 黄鲈 | `tide:yellow_perch` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods、auto_seafood | - | 标签 #c:foods |  |
+| 鸡肉米粥 | `ubesdelight:arroz_caldo` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香蒜炒饭加蛋配煎鱼 | `ubesdelight:bangsilog` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式牛骨汤 | `ubesdelight:bulalo` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲律宾烤鸡 | `ubesdelight:chicken_inasal` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式烤鸡饭 | `ubesdelight:chicken_inasal_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 炼乳瓶 | `ubesdelight:condensed_milk_bottle` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生姜饼干 | `ubesdelight:cookie_ginger` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋饼干 | `ubesdelight:cookie_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蜗牛面包 | `ubesdelight:ensaymada` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生蜗牛面包 | `ubesdelight:ensaymada_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋蜗牛面包 | `ubesdelight:ensaymada_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生香芋蜗牛面包 | `ubesdelight:ensaymada_ube_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 鱼露瓶 | `ubesdelight:fish_sauce_bottle` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `ubesdelight:halo_halo` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 豆沙霍皮饼 | `ubesdelight:hopia_munggo` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生豆沙霍皮饼 | `ubesdelight:hopia_munggo_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋霍皮饼 | `ubesdelight:hopia_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生香芋霍皮饼 | `ubesdelight:hopia_ube_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲律宾酸橘汁腌鱼 | `ubesdelight:kinilaw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓米饭 | `ubesdelight:leaf_feast_cooked_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓米饭 | `ubesdelight:leaf_feast_cooked_rice_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓蜗牛面包 | `ubesdelight:leaf_feast_ensaymada` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓蜗牛面包 | `ubesdelight:leaf_feast_ensaymada_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓香芋蜗牛面包 | `ubesdelight:leaf_feast_ensaymada_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓香芋蜗牛面包 | `ubesdelight:leaf_feast_ensaymada_ube_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓炒饭 | `ubesdelight:leaf_feast_fried_rice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓炒饭 | `ubesdelight:leaf_feast_fried_rice_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓豆沙霍皮饼 | `ubesdelight:leaf_feast_hopia_munggo` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓豆沙霍皮饼 | `ubesdelight:leaf_feast_hopia_munggo_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓香芋霍皮饼 | `ubesdelight:leaf_feast_hopia_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓香芋霍皮饼 | `ubesdelight:leaf_feast_hopia_ube_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓圆面包 | `ubesdelight:leaf_feast_pandesal` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓圆面包 | `ubesdelight:leaf_feast_pandesal_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓香芋圆面包 | `ubesdelight:leaf_feast_pandesal_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓香芋圆面包 | `ubesdelight:leaf_feast_pandesal_ube_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 叶席手抓香蒜炒饭 | `ubesdelight:leaf_feast_sinangag` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 半份叶席手抓香蒜炒饭 | `ubesdelight:leaf_feast_sinangag_half` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式焦糖布丁切片 | `ubesdelight:leche_flan` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式焦糖布丁 | `ubesdelight:leche_flan_feast` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲律宾润饼 | `ubesdelight:lumpia` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式茄汁牛肉 | `ubesdelight:mechado` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| ? | `ubesdelight:milk_tea_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 圆面包 | `ubesdelight:pandesal` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生圆面包 | `ubesdelight:pandesal_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋圆面包 | `ubesdelight:pandesal_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 生香芋圆面包 | `ubesdelight:pandesal_ube_raw` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 毒香芋 | `ubesdelight:poisonous_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 西班牙酥饼 | `ubesdelight:polvorone` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 曲奇奶油西班牙酥饼 | `ubesdelight:polvorone_cc` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 脆米西班牙酥饼 | `ubesdelight:polvorone_pinipig` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋西班牙酥饼 | `ubesdelight:polvorone_ube` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香蒜炒饭 | `ubesdelight:sinangag` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 肉肉杂碎 | `ubesdelight:sisig` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 菲式甜烧肉 | `ubesdelight:tocino` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 蒜炒饭配甜烧肉和煎蛋 | `ubesdelight:tosilog` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋蛋糕 | `ubesdelight:ube_cake` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 香芋蛋糕切片 | `ubesdelight:ube_cake_slice` | 1.6 | 1.36 | 1.888 | 64 | 64 | 是 | auto_foods | - | 标签 #c:foods |  |
+| 空地图 | `minecraft:map` | 1.5 | 1.275 | 1.77 | 341 | 682 |  | commerce、scholar | - | 手写价 |  |
+| 铁锄 | `minecraft:iron_hoe` | 1.4 | 1.19 | 1.652 | 366 | 732 |  | - | farming | 手写价 |  |
+| 黄瓜 | `adorablehamsterpets:cucumber` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 青豆 | `adorablehamsterpets:green_beans` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 奇异洋葱 | `biomeswevegone:oddion_bulb` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 苍白南瓜 | `biomeswevegone:pale_pumpkin` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| ? | `compatdelight:cucumber` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| ? | `compatdelight:garlic` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 卷心菜 | `farmersdelight:cabbage` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 卷心菜叶 | `farmersdelight:cabbage_leaf` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 洋葱 | `farmersdelight:onion` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 稻米 | `farmersdelight:rice` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_seeds、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 番茄 | `farmersdelight:tomato` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 青辣椒 | `kaleidoscope_cookery:green_chili` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 生菜 | `kaleidoscope_cookery:lettuce` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 红辣椒 | `kaleidoscope_cookery:red_chili` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 稻米 | `kaleidoscope_cookery:rice` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_seeds、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 番茄 | `kaleidoscope_cookery:tomato` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 仙人掌 | `minecraft:cactus` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 可可豆 | `minecraft:cocoa_beans` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 铜锭 | `minecraft:copper_ingot` | 1.2 | 1.02 | 1.416 | 427 | 854 |  | smelting | - | 手写价 |  |
+| 西瓜 | `minecraft:melon` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 下界疣 | `minecraft:nether_wart` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 南瓜 | `minecraft:pumpkin` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 下界石英 | `minecraft:quartz` | 1.2 | 1.02 | 1.416 | 427 | 854 |  | gems | - | 手写价 |  |
+| 剪刀 | `minecraft:shears` | 1.2 | 1.02 | 1.416 | 427 | 854 |  | - | textile | 手写价 |  |
+| 甘蔗 | `minecraft:sugar_cane` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 绿甜椒 | `rusticdelight:bell_pepper_green` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 红甜椒 | `rusticdelight:bell_pepper_red` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 黄甜椒 | `rusticdelight:bell_pepper_yellow` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 咖啡豆 | `rusticdelight:coffee_beans` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_seeds、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 棉铃 | `rusticdelight:cotton_boll` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 马铃薯片 | `rusticdelight:potato_slices` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 姜 | `snowyspirit:ginger` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 亚麻 | `supplementaries:flax` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 大蒜 | `ubesdelight:garlic` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 蒜末 | `ubesdelight:garlic_chop` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 生姜 | `ubesdelight:ginger` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 姜末 | `ubesdelight:ginger_chop` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 香茅 | `ubesdelight:lemongrass` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 香芋 | `ubesdelight:ube` | 1.2 | 1.02 | 1.416 | 64 | 64 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 标签 #c:crops |  |
+| 干草捆 | `minecraft:hay_block` | 1.1 | 0.935 | 1.298 | 465 | 930 |  | farming | herding | 手写价 |  |
+| 制图台 | `minecraft:cartography_table` | 1 | 0.85 | 1.18 | 512 | 1024 |  | commerce | - | 手写价 |  |
+| 金胡萝卜 | `minecraft:golden_carrot` | 1 | 0.85 | 1.18 | 512 | 1024 | 是 | auto_foods、cookery、farming | banquet | 手写价 |  |
+| ? | `compatdelight:soap_dust` | 0.9 | 0.765 | 1.062 | 569 | 1138 |  | auto_dusts | auto_ores | 标签 #c:dusts |  |
+| 讲台 | `minecraft:lectern` | 0.9 | 0.765 | 1.062 | 569 | 1138 |  | scholar | - | 手写价 |  |
+| ? | `pureamethysttools:amethyst_dust` | 0.9 | 0.765 | 1.062 | 569 | 1138 |  | auto_dusts | auto_ores | 标签 #c:dusts |  |
+| ? | `pureamethysttools:pure_amethyst_dust` | 0.9 | 0.765 | 1.062 | 569 | 1138 |  | auto_dusts | auto_ores | 标签 #c:dusts |  |
+| 灰烬 | `supplementaries:ash` | 0.9 | 0.765 | 1.062 | 569 | 1138 |  | auto_dusts | auto_ores | 标签 #c:dusts |  |
+| 铁轨 | `minecraft:rail` | 0.8 | 0.68 | 0.944 | 640 | 1280 |  | - | coal | 手写价 |  |
+| 红石粉 | `minecraft:redstone` | 0.8 | 0.68 | 0.944 | 640 | 1280 |  | - | - | 手写价 |  |
+| 书 | `minecraft:book` | 0.65 | 0.552 | 0.767 | 788 | 1576 |  | commerce、scholar | - | 手写价 |  |
+| 拴绳 | `minecraft:lead` | 0.6 | 0.51 | 0.708 | 853 | 1706 |  | - | quarrying | 手写价 |  |
+| 蜂蜜瓶 | `minecraft:honey_bottle` | 0.55 | 0.468 | 0.649 | 931 | 1862 | 是 | auto_foods、brewing、forestry | - | 手写价 |  |
+| 木桶 | `minecraft:barrel` | 0.5 | 0.425 | 0.59 | 1024 | 2048 |  | - | orchard | 手写价 |  |
+| 钓鱼竿 | `minecraft:fishing_rod` | 0.5 | 0.425 | 0.59 | 1024 | 2048 |  | - | fishing | 手写价 |  |
+| 彩虹玻璃 | `regions_unexplored:prismaglass` | 0.5 | 0.425 | 0.59 | 1024 | 2048 |  | auto_glass | - | 标签 #c:glass_blocks |  |
+| 白色羊毛 | `minecraft:white_wool` | 0.45 | 0.383 | 0.531 | 1138 | 2276 |  | auto_wool、herding、textile | - | 手写价 |  |
+| 黑色羊毛 | `minecraft:black_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 蓝色羊毛 | `minecraft:blue_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 骨头 | `minecraft:bone` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | - | - | 标签 #c:bones |  |
+| 棕色羊毛 | `minecraft:brown_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 青色羊毛 | `minecraft:cyan_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 灰色羊毛 | `minecraft:gray_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 绿色羊毛 | `minecraft:green_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 蜜脾 | `minecraft:honeycomb` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | orchard | - | 手写价 |  |
+| 皮革 | `minecraft:leather` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | herding、textile | armory、backwater、farming、textile | 手写价 |  |
+| 淡蓝色羊毛 | `minecraft:light_blue_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 淡灰色羊毛 | `minecraft:light_gray_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 黄绿色羊毛 | `minecraft:lime_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 品红色羊毛 | `minecraft:magenta_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 橙色羊毛 | `minecraft:orange_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 粉红色羊毛 | `minecraft:pink_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 紫色羊毛 | `minecraft:purple_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 红色羊毛 | `minecraft:red_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 黄色羊毛 | `minecraft:yellow_wool` | 0.4 | 0.34 | 0.472 | 1280 | 2560 |  | auto_wool | - | 标签 #minecraft:wool |  |
+| 煤炭 | `minecraft:coal` | 0.36 | 0.306 | 0.425 | 1422 | 2844 |  | coal | backwater、forestry、kiln、smelting | 手写价 |  |
+| 面包 | `minecraft:bread` | 0.35 | 0.297 | 0.413 | 1463 | 2926 | 是 | auto_foods | backwater | 手写价 |  |
+| 石斧 | `minecraft:stone_axe` | 0.35 | 0.297 | 0.413 | 1463 | 2926 |  | - | forestry | 手写价 |  |
+| 垂死木原木 | `biomesoplenty:dead_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 垂死木 | `biomesoplenty:dead_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:empyreal_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:empyreal_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉原木 | `biomesoplenty:fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉木 | `biomesoplenty:fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 夜光菇 | `biomesoplenty:glowshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 地狱皮木原木 | `biomesoplenty:hellbark_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 地狱皮木 | `biomesoplenty:hellbark_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝花楹木原木 | `biomesoplenty:jacaranda_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝花楹木 | `biomesoplenty:jacaranda_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 魔法木原木 | `biomesoplenty:magic_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 魔法木 | `biomesoplenty:magic_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心木原木 | `biomesoplenty:mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心木 | `biomesoplenty:mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 棕榈木原木 | `biomesoplenty:palm_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 棕榈木 | `biomesoplenty:palm_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:pine_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:pine_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红木原木 | `biomesoplenty:redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红木 | `biomesoplenty:redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮垂死木原木 | `biomesoplenty:stripped_dead_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮垂死木 | `biomesoplenty:stripped_dead_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_empyreal_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_empyreal_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉木原木 | `biomesoplenty:stripped_fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉木 | `biomesoplenty:stripped_fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮地狱皮木原木 | `biomesoplenty:stripped_hellbark_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮地狱皮木 | `biomesoplenty:stripped_hellbark_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝花楹木原木 | `biomesoplenty:stripped_jacaranda_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝花楹木 | `biomesoplenty:stripped_jacaranda_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮魔法木原木 | `biomesoplenty:stripped_magic_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮魔法木 | `biomesoplenty:stripped_magic_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心木原木 | `biomesoplenty:stripped_mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心木 | `biomesoplenty:stripped_mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮棕榈木原木 | `biomesoplenty:stripped_palm_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮棕榈木 | `biomesoplenty:stripped_palm_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_pine_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `biomesoplenty:stripped_pine_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红木原木 | `biomesoplenty:stripped_redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红木 | `biomesoplenty:stripped_redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮暗影木原木 | `biomesoplenty:stripped_umbran_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮暗影木 | `biomesoplenty:stripped_umbran_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳木原木 | `biomesoplenty:stripped_willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳木 | `biomesoplenty:stripped_willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 伞菌 | `biomesoplenty:toadstool` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 暗影木原木 | `biomesoplenty:umbran_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 暗影木 | `biomesoplenty:umbran_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳木原木 | `biomesoplenty:willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳木 | `biomesoplenty:willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白杨原木 | `biomeswevegone:aspen_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白杨木 | `biomeswevegone:aspen_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 猴面包原木 | `biomeswevegone:baobab_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 猴面包木 | `biomeswevegone:baobab_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝色魔法原木 | `biomeswevegone:blue_enchanted_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝色魔法木 | `biomeswevegone:blue_enchanted_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 锡卡原木 | `biomeswevegone:cika_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 锡卡木 | `biomeswevegone:cika_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柏木原木 | `biomeswevegone:cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柏木 | `biomeswevegone:cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 乌木原木 | `biomeswevegone:ebony_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 乌木 | `biomeswevegone:ebony_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉原木 | `biomeswevegone:fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉木 | `biomeswevegone:fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 花茎 | `biomeswevegone:florus_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 花茎木 | `biomeswevegone:florus_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绿色魔法原木 | `biomeswevegone:green_enchanted_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绿色魔法木 | `biomeswevegone:green_enchanted_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绿色蘑菇 | `biomeswevegone:green_mushroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 冬青原木 | `biomeswevegone:holly_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冬青木 | `biomeswevegone:holly_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 铁色木原木 | `biomeswevegone:ironwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 铁色木 | `biomeswevegone:ironwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝花楹原木 | `biomeswevegone:jacaranda_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝花楹木 | `biomeswevegone:jacaranda_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心木原木 | `biomeswevegone:mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心木 | `biomeswevegone:mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 枫木原木 | `biomeswevegone:maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 枫木 | `biomeswevegone:maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 棕榈原木 | `biomeswevegone:palm_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 棕榈木 | `biomeswevegone:palm_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 扁轴原木 | `biomeswevegone:palo_verde_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 扁轴木 | `biomeswevegone:palo_verde_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 松木原木 | `biomeswevegone:pine_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 松木 | `biomeswevegone:pine_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 彩虹桉原木 | `biomeswevegone:rainbow_eucalyptus_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 彩虹桉木 | `biomeswevegone:rainbow_eucalyptus_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红杉原木 | `biomeswevegone:redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红杉木 | `biomeswevegone:redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 樱花原木 | `biomeswevegone:sakura_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 樱花木 | `biomeswevegone:sakura_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 层孔菌 | `biomeswevegone:shelf_fungi` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 天际原木 | `biomeswevegone:skyris_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 天际木 | `biomeswevegone:skyris_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 灵魂原木 | `biomeswevegone:spirit_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 灵魂树根 | `biomeswevegone:spirit_roots` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 灵魂木 | `biomeswevegone:spirit_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白杨原木 | `biomeswevegone:stripped_aspen_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白杨木 | `biomeswevegone:stripped_aspen_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮猴面包原木 | `biomeswevegone:stripped_baobab_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮猴面包木 | `biomeswevegone:stripped_baobab_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝色魔法原木 | `biomeswevegone:stripped_blue_enchanted_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝色魔法木 | `biomeswevegone:stripped_blue_enchanted_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮锡卡原木 | `biomeswevegone:stripped_cika_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮锡卡木 | `biomeswevegone:stripped_cika_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柏木原木 | `biomeswevegone:stripped_cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柏木 | `biomeswevegone:stripped_cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮乌木原木 | `biomeswevegone:stripped_ebony_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮乌木 | `biomeswevegone:stripped_ebony_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉木原木 | `biomeswevegone:stripped_fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉木 | `biomeswevegone:stripped_fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮花茎 | `biomeswevegone:stripped_florus_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮花茎木 | `biomeswevegone:stripped_florus_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮绿色魔法原木 | `biomeswevegone:stripped_green_enchanted_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮绿色魔法木 | `biomeswevegone:stripped_green_enchanted_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冬青原木 | `biomeswevegone:stripped_holly_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冬青木 | `biomeswevegone:stripped_holly_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮铁色木原木 | `biomeswevegone:stripped_ironwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮铁色木 | `biomeswevegone:stripped_ironwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝花楹原木 | `biomeswevegone:stripped_jacaranda_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮蓝花楹木 | `biomeswevegone:stripped_jacaranda_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心木原木 | `biomeswevegone:stripped_mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心木 | `biomeswevegone:stripped_mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮枫木原木 | `biomeswevegone:stripped_maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮枫木 | `biomeswevegone:stripped_maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮棕榈原木 | `biomeswevegone:stripped_palm_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮棕榈木 | `biomeswevegone:stripped_palm_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮扁轴原木 | `biomeswevegone:stripped_palo_verde_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮扁轴木 | `biomeswevegone:stripped_palo_verde_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮松木原木 | `biomeswevegone:stripped_pine_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮松木 | `biomeswevegone:stripped_pine_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮彩虹桉原木 | `biomeswevegone:stripped_rainbow_eucalyptus_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮彩虹桉木 | `biomeswevegone:stripped_rainbow_eucalyptus_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红杉原木 | `biomeswevegone:stripped_redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红杉木 | `biomeswevegone:stripped_redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮樱花原木 | `biomeswevegone:stripped_sakura_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮樱花木 | `biomeswevegone:stripped_sakura_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮天际原木 | `biomeswevegone:stripped_skyris_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮天际木 | `biomeswevegone:stripped_skyris_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮灵魂原木 | `biomeswevegone:stripped_spirit_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮灵魂木 | `biomeswevegone:stripped_spirit_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白色红树原木 | `biomeswevegone:stripped_white_mangrove_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白色红树木 | `biomeswevegone:stripped_white_mangrove_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳木原木 | `biomeswevegone:stripped_willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳木 | `biomeswevegone:stripped_willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮金缕梅原木 | `biomeswevegone:stripped_witch_hazel_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮金缕梅木 | `biomeswevegone:stripped_witch_hazel_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮榉木原木 | `biomeswevegone:stripped_zelkova_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮榉木 | `biomeswevegone:stripped_zelkova_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 多汁乳菇 | `biomeswevegone:weeping_milkcap` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 白色红树原木 | `biomeswevegone:white_mangrove_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白色红树木 | `biomeswevegone:white_mangrove_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳木原木 | `biomeswevegone:willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳木 | `biomeswevegone:willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 金缕梅原木 | `biomeswevegone:witch_hazel_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 金缕梅木 | `biomeswevegone:witch_hazel_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 紫丁香菇 | `biomeswevegone:wood_blewit` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 榉木原木 | `biomeswevegone:zelkova_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 榉木 | `biomeswevegone:zelkova_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 杜鹃原木 | `ecologics:azalea_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 杜鹃木 | `ecologics:azalea_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 椰木原木 | `ecologics:coconut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 椰木 | `ecologics:coconut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 盛开的杜鹃原木 | `ecologics:flowering_azalea_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 盛开的杜鹃木 | `ecologics:flowering_azalea_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮杜鹃原木 | `ecologics:stripped_azalea_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮杜鹃木 | `ecologics:stripped_azalea_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮椰木原木 | `ecologics:stripped_coconut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮椰木 | `ecologics:stripped_coconut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮核桃原木 | `ecologics:stripped_walnut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮核桃木 | `ecologics:stripped_walnut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 核桃原木 | `ecologics:walnut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 核桃木 | `ecologics:walnut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:muddy_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:muddy_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:stripped_cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:stripped_cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:stripped_muddy_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `goodending:stripped_muddy_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 金合欢原木 | `minecraft:acacia_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 金合欢木 | `minecraft:acacia_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 生牛肉 | `minecraft:beef` | 0.3 | 0.255 | 0.354 | 1707 | 3414 | 是 | auto_foods、herding | - | 手写价 |  |
+| 白桦木 | `minecraft:birch_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 黑色染料 | `minecraft:black_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 蓝色染料 | `minecraft:blue_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 棕色染料 | `minecraft:brown_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 棕色蘑菇 | `minecraft:brown_mushroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 木炭 | `minecraft:charcoal` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | coal、forestry | smelting | 手写价 |  |
+| 樱花原木 | `minecraft:cherry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 樱花木 | `minecraft:cherry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绯红菌核 | `minecraft:crimson_hyphae` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绯红菌柄 | `minecraft:crimson_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 青色染料 | `minecraft:cyan_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 深色橡木原木 | `minecraft:dark_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 深色橡木 | `minecraft:dark_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 燧石 | `minecraft:flint` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | backwater | armory | 手写价 |  |
+| 玻璃 | `minecraft:glass` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | kiln | brewing、gems、orchard | 手写价 |  |
+| 发光地衣 | `minecraft:glow_lichen` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 金粒 | `minecraft:gold_nugget` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | - | - | 标签 #c:nuggets |  |
+| 灰色染料 | `minecraft:gray_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 绿色染料 | `minecraft:green_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 垂根 | `minecraft:hanging_roots` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 墨囊 | `minecraft:ink_sac` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | - | commerce、scholar | 手写价 |  |
+| 铁粒 | `minecraft:iron_nugget` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | - | - | 标签 #c:nuggets |  |
+| 丛林原木 | `minecraft:jungle_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 丛林木 | `minecraft:jungle_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 淡蓝色染料 | `minecraft:light_blue_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 淡灰色染料 | `minecraft:light_gray_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 黄绿色染料 | `minecraft:lime_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 品红色染料 | `minecraft:magenta_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 红树原木 | `minecraft:mangrove_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红树木 | `minecraft:mangrove_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 橡木 | `minecraft:oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 橙色染料 | `minecraft:orange_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 苍白橡木原木 | `minecraft:pale_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 苍白橡木 | `minecraft:pale_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 纸 | `minecraft:paper` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | commerce | scholar | 手写价 |  |
+| 粉红色染料 | `minecraft:pink_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 紫色染料 | `minecraft:purple_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| 红色染料 | `minecraft:red_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool、textile | 手写价 |  |
+| 红色蘑菇 | `minecraft:red_mushroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 云杉木 | `minecraft:spruce_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮金合欢原木 | `minecraft:stripped_acacia_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮金合欢木 | `minecraft:stripped_acacia_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白桦原木 | `minecraft:stripped_birch_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白桦木 | `minecraft:stripped_birch_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮樱花原木 | `minecraft:stripped_cherry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮樱花木 | `minecraft:stripped_cherry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮绯红菌核 | `minecraft:stripped_crimson_hyphae` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮绯红菌柄 | `minecraft:stripped_crimson_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮深色橡木原木 | `minecraft:stripped_dark_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮深色橡木 | `minecraft:stripped_dark_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮丛林原木 | `minecraft:stripped_jungle_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮丛林木 | `minecraft:stripped_jungle_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红树原木 | `minecraft:stripped_mangrove_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红树木 | `minecraft:stripped_mangrove_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮橡木原木 | `minecraft:stripped_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮橡木 | `minecraft:stripped_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮苍白橡木原木 | `minecraft:stripped_pale_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮苍白橡木 | `minecraft:stripped_pale_oak_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮云杉原木 | `minecraft:stripped_spruce_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮云杉木 | `minecraft:stripped_spruce_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮诡异菌核 | `minecraft:stripped_warped_hyphae` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮诡异菌柄 | `minecraft:stripped_warped_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 诡异菌核 | `minecraft:warped_hyphae` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 诡异菌柄 | `minecraft:warped_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白色染料 | `minecraft:white_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool、textile | 手写价 |  |
+| 黄色染料 | `minecraft:yellow_dye` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_dyes | auto_wool | 标签 #c:dyes |  |
+| ? | `mysticsbiomes:black_cherry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:black_cherry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:lavender_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:lavender_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:peach_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:peach_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:sea_foam_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:sea_foam_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:spring_bamboo_block` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:strawberry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:strawberry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_black_cherry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_black_cherry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_lavender_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_lavender_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_peach_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_peach_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_sea_foam_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_sea_foam_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_spring_bamboo_block` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_strawberry_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_strawberry_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_tropical_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_tropical_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_vanilla_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:stripped_vanilla_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:tropical_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:tropical_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:vanilla_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `mysticsbiomes:vanilla_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白杨原木 | `natures_spirit:aspen_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 白杨木 | `natures_spirit:aspen_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 雪松原木 | `natures_spirit:cedar_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 雪松木 | `natures_spirit:cedar_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 椰子原木 | `natures_spirit:coconut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 椰子木 | `natures_spirit:coconut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柏木原木 | `natures_spirit:cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柏木 | `natures_spirit:cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉原木 | `natures_spirit:fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 冷杉木 | `natures_spirit:fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 牧豆树原木 | `natures_spirit:ghaf_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 牧豆木 | `natures_spirit:ghaf_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 短叶丝兰原木捆块 | `natures_spirit:joshua_bundle` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 短叶丝兰原木 | `natures_spirit:joshua_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 落叶松原木 | `natures_spirit:larch_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 落叶松木 | `natures_spirit:larch_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心原木 | `natures_spirit:mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桃花心木 | `natures_spirit:mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 枫木原木 | `natures_spirit:maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 枫木 | `natures_spirit:maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 橄榄树原木 | `natures_spirit:olive_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 橄榄木 | `natures_spirit:olive_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 假紫荆原木 | `natures_spirit:palo_verde_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 假紫荆木 | `natures_spirit:palo_verde_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红杉木原木 | `natures_spirit:redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红杉木 | `natures_spirit:redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 梭梭原木 | `natures_spirit:saxaul_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 梭梭木 | `natures_spirit:saxaul_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白杨原木 | `natures_spirit:stripped_aspen_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮白杨木 | `natures_spirit:stripped_aspen_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮雪松原木 | `natures_spirit:stripped_cedar_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮雪松木 | `natures_spirit:stripped_cedar_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮椰子木原木 | `natures_spirit:stripped_coconut_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮椰子木 | `natures_spirit:stripped_coconut_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柏木原木 | `natures_spirit:stripped_cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柏木 | `natures_spirit:stripped_cypress_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉原木 | `natures_spirit:stripped_fir_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮冷杉木 | `natures_spirit:stripped_fir_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮牧豆原木 | `natures_spirit:stripped_ghaf_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮牧豆木 | `natures_spirit:stripped_ghaf_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮短叶丝兰原木捆块 | `natures_spirit:stripped_joshua_bundle` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮短叶丝兰原木 | `natures_spirit:stripped_joshua_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮落叶松原木 | `natures_spirit:stripped_larch_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮落叶松木 | `natures_spirit:stripped_larch_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心原木 | `natures_spirit:stripped_mahogany_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮桃花心木 | `natures_spirit:stripped_mahogany_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮枫木原木 | `natures_spirit:stripped_maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮枫木 | `natures_spirit:stripped_maple_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮橄榄树原木 | `natures_spirit:stripped_olive_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮橄榄木 | `natures_spirit:stripped_olive_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮假紫荆原木 | `natures_spirit:stripped_palo_verde_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮假紫荆木 | `natures_spirit:stripped_palo_verde_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红杉原木 | `natures_spirit:stripped_redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮红杉木 | `natures_spirit:stripped_redwood_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮梭梭原木 | `natures_spirit:stripped_saxaul_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮梭梭木 | `natures_spirit:stripped_saxaul_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳杉原木 | `natures_spirit:stripped_sugi_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳杉木 | `natures_spirit:stripped_sugi_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳树原木 | `natures_spirit:stripped_willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮柳木 | `natures_spirit:stripped_willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮紫藤原木 | `natures_spirit:stripped_wisteria_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 去皮紫藤木 | `natures_spirit:stripped_wisteria_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳杉木原木 | `natures_spirit:sugi_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳杉木 | `natures_spirit:sugi_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳树原木 | `natures_spirit:willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柳木 | `natures_spirit:willow_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 紫藤树原木 | `natures_spirit:wisteria_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 紫藤木 | `natures_spirit:wisteria_wood` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 界初原木 | `regions_unexplored:alpha_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:ashen_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 猴面包原木 | `regions_unexplored:baobab_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 黑檀原木 | `regions_unexplored:blackwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 蓝色发光蘑菇 | `regions_unexplored:blue_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| ? | `regions_unexplored:blue_bioshroom_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 幽匿木原木 | `regions_unexplored:brimwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:cobalt_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 柏木原木 | `regions_unexplored:cypress_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 亡灵木原木 | `regions_unexplored:dead_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 桉木原木 | `regions_unexplored:eucalyptus_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 绿色发光蘑菇 | `regions_unexplored:green_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| ? | `regions_unexplored:green_bioshroom_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 约书亚木原木 | `regions_unexplored:joshua_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:kapok_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 落叶松原木 | `regions_unexplored:larch_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:magnolia_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 枫木原木 | `regions_unexplored:maple_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:mycotoxic_mushrooms` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 棕榈原木 | `regions_unexplored:palm_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 松木原木 | `regions_unexplored:pine_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 粉色发光蘑菇 | `regions_unexplored:pink_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| ? | `regions_unexplored:pink_bioshroom_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 红杉原木 | `regions_unexplored:redwood_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:silver_birch_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:small_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:socotra_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:stripped_small_oak_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 高蓝色发光蘑菇 | `regions_unexplored:tall_blue_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 高绿色发光蘑菇 | `regions_unexplored:tall_green_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 高粉色发光蘑菇 | `regions_unexplored:tall_pink_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 高黄色发光蘑菇 | `regions_unexplored:tall_yellow_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| 柳木原木 | `regions_unexplored:willow_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| ? | `regions_unexplored:wisteria_log` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 黄色发光蘑菇 | `regions_unexplored:yellow_bioshroom` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | auto_mushrooms、cookery | banquet | 标签 #c:mushrooms |  |
+| ? | `regions_unexplored:yellow_bioshroom_stem` | 0.3 | 0.255 | 0.354 | 1707 | 3414 |  | forestry | auto_planks | 标签 #minecraft:logs |  |
+| 垂死木木板 | `biomesoplenty:dead_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `biomesoplenty:empyreal_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 冷杉木板 | `biomesoplenty:fir_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 地狱皮木板 | `biomesoplenty:hellbark_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 蓝花楹木板 | `biomesoplenty:jacaranda_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 魔法木板 | `biomesoplenty:magic_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 桃花心木板 | `biomesoplenty:mahogany_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `biomesoplenty:maple_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 棕榈木板 | `biomesoplenty:palm_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `biomesoplenty:pine_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红木木板 | `biomesoplenty:redwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 暗影木木板 | `biomesoplenty:umbran_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柳木木板 | `biomesoplenty:willow_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 白杨木板 | `biomeswevegone:aspen_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 猴面包木板 | `biomeswevegone:baobab_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 蓝色魔法木板 | `biomeswevegone:blue_enchanted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 锡卡木板 | `biomeswevegone:cika_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柏木木板 | `biomeswevegone:cypress_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 乌木木板 | `biomeswevegone:ebony_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 冷杉木板 | `biomeswevegone:fir_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 花茎木板 | `biomeswevegone:florus_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 绿色魔法木板 | `biomeswevegone:green_enchanted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 冬青木板 | `biomeswevegone:holly_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 铁色木板 | `biomeswevegone:ironwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 蓝花楹木板 | `biomeswevegone:jacaranda_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 桃花心木板 | `biomeswevegone:mahogany_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 枫木木板 | `biomeswevegone:maple_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 棕榈木板 | `biomeswevegone:palm_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 松木木板 | `biomeswevegone:pine_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 彩虹桉木板 | `biomeswevegone:rainbow_eucalyptus_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红杉木板 | `biomeswevegone:redwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 樱花木板 | `biomeswevegone:sakura_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 天际木板 | `biomeswevegone:skyris_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 灵魂木板 | `biomeswevegone:spirit_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 白色红树木板 | `biomeswevegone:white_mangrove_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柳木木板 | `biomeswevegone:willow_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 金缕梅木板 | `biomeswevegone:witch_hazel_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 榉木木板 | `biomeswevegone:zelkova_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 杜鹃木板 | `ecologics:azalea_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 椰木木板 | `ecologics:coconut_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 盛开的杜鹃木板 | `ecologics:flowering_azalea_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 核桃木板 | `ecologics:walnut_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `goodending:cypress_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `goodending:muddy_oak_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 金合欢木板 | `minecraft:acacia_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 竹板 | `minecraft:bamboo_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 白桦原木 | `minecraft:birch_log` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | forestry | auto_planks | 手写价 |  |
+| 白桦木板 | `minecraft:birch_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 樱花木板 | `minecraft:cherry_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 绯红木板 | `minecraft:crimson_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 深色橡木木板 | `minecraft:dark_oak_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 发光浆果 | `minecraft:glow_berries` | 0.25 | 0.212 | 0.295 | 2048 | 4096 | 是 | auto_foods、auto_mushrooms、cookery、orchard | banquet | 手写价 |  |
+| 丛林木板 | `minecraft:jungle_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红树木板 | `minecraft:mangrove_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 生羊肉 | `minecraft:mutton` | 0.25 | 0.212 | 0.295 | 2048 | 4096 | 是 | auto_foods、herding | - | 手写价 |  |
+| 橡木原木 | `minecraft:oak_log` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | forestry | auto_planks | 手写价 |  |
+| 橡木木板 | `minecraft:oak_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 苍白橡木木板 | `minecraft:pale_oak_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 生鲑鱼 | `minecraft:salmon` | 0.25 | 0.212 | 0.295 | 2048 | 4096 | 是 | auto_foods、auto_seafood、fishing | - | 手写价 |  |
+| 云杉原木 | `minecraft:spruce_log` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | forestry | auto_planks | 手写价 |  |
+| 云杉木板 | `minecraft:spruce_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 诡异木板 | `minecraft:warped_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:black_cherry_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:lavender_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:maple_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:peach_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:sea_foam_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:spring_mosaic` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:spring_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:strawberry_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:tropical_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `mysticsbiomes:vanilla_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 白杨木板 | `natures_spirit:aspen_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 雪松木板 | `natures_spirit:cedar_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 椰子木板 | `natures_spirit:coconut_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柏木木板 | `natures_spirit:cypress_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 冷杉木板 | `natures_spirit:fir_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 牧豆木板 | `natures_spirit:ghaf_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 短叶丝兰木板 | `natures_spirit:joshua_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 落叶松木板 | `natures_spirit:larch_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 桃花心木板 | `natures_spirit:mahogany_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 枫木木板 | `natures_spirit:maple_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 橄榄木板 | `natures_spirit:olive_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 假紫荆木板 | `natures_spirit:palo_verde_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红杉木板 | `natures_spirit:redwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 梭梭木板 | `natures_spirit:saxaul_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柳杉木板 | `natures_spirit:sugi_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柳木木板 | `natures_spirit:willow_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 紫藤木板 | `natures_spirit:wisteria_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 界初木板 | `regions_unexplored:alpha_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 猴面包木板 | `regions_unexplored:baobab_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 黑色染色木板 | `regions_unexplored:black_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 黑檀木板 | `regions_unexplored:blackwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:blue_bioshroom_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 蓝色染色木板 | `regions_unexplored:blue_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 幽匿木板 | `regions_unexplored:brimwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 棕色染色木板 | `regions_unexplored:brown_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:cobalt_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 青色染色木板 | `regions_unexplored:cyan_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柏木木板 | `regions_unexplored:cypress_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 亡灵木木板 | `regions_unexplored:dead_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 桉树木板 | `regions_unexplored:eucalyptus_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 灰色染色木板 | `regions_unexplored:gray_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:green_bioshroom_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 绿色染色木板 | `regions_unexplored:green_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 约书亚木木板 | `regions_unexplored:joshua_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:kapok_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 落叶松木板 | `regions_unexplored:larch_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 淡蓝色染色木板 | `regions_unexplored:light_blue_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 淡灰色染色木板 | `regions_unexplored:light_gray_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 黄绿色染色木板 | `regions_unexplored:lime_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 品红色染色木板 | `regions_unexplored:magenta_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:magnolia_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 枫木木板 | `regions_unexplored:maple_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 橙色染色木板 | `regions_unexplored:orange_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 棕榈木板 | `regions_unexplored:palm_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 松木木板 | `regions_unexplored:pine_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:pink_bioshroom_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 粉色染色木板 | `regions_unexplored:pink_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 紫色染色木板 | `regions_unexplored:purple_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红色染色木板 | `regions_unexplored:red_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 红杉木板 | `regions_unexplored:redwood_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:socotra_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 白色染色木板 | `regions_unexplored:white_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 柳木木板 | `regions_unexplored:willow_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:wisteria_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| ? | `regions_unexplored:yellow_bioshroom_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 黄色染色木板 | `regions_unexplored:yellow_painted_planks` | 0.25 | 0.212 | 0.295 | 2048 | 4096 |  | auto_planks | - | 标签 #minecraft:planks |  |
+| 黄瓜种子 | `adorablehamsterpets:cucumber_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 青豆种子 | `adorablehamsterpets:green_bean_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 葵花籽 | `adorablehamsterpets:sunflower_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 苍白南瓜种子 | `biomeswevegone:pale_pumpkin_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| ? | `blue_skies:carabeef` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `blue_skies:cooked_carabeef` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `blue_skies:cooked_monitor_tail` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `blue_skies:cooked_venison` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `blue_skies:monitor_tail` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `blue_skies:venison` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `born_in_chaos_v1:monster_flesh` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `born_in_chaos_v1:rotten_fish` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `born_in_chaos_v1:smoked_fish` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `born_in_chaos_v1:smoked_flesh` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `born_in_chaos_v1:smoked_monster_flesh` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:awful_chast` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_awful_chast` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_butterfly` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_caterpillar` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_crab_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_grottol_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_ice_cube` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_martian_raptor_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_mutant_creeper_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_mutant_enderman_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_mutant_skeleton_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_mutant_snow_golem_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_naga_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_penguin` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_piglin_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_propulk` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_rascal_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_sand_shapper` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_spider_pig_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_umvuthana` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_warped_enderman` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_wex_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_wilden_guardian_steak` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cooked_wilden_stalker_maet` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:crab_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_bass` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_catfish` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_bass` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_butterfly` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_caterpillar` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_catfish` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_duck` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_ice_cube` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_lizard` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_martian_raptor` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_sand_shapper` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_cooked_venison` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_duck` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_ice_cube` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_lizard_tail` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_raw_martian_raptor` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_sand_shapper` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:cut_venison` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:dragon_chaos_steak` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat | 黑名单：关键词 dragon |
+| ? | `compatdelight:duck_soup` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:ender_dragon_steak` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat | 黑名单：关键词 dragon |
+| ? | `compatdelight:frostmaw_steak` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:glare_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:grottol_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:grottol_wrap` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:hamburger_of_umvuthana` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:ice_cube` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:ice_sandwich` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:marinated_nagi_tail` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:mutant_creeper_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:mutant_enderman_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:mutant_rotten_flesh` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:mutant_skeleton_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:mutant_snow_golem_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:naga_heart` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat | 黑名单：关键词 _heart |
+| ? | `compatdelight:naga_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:penguin` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:piglin_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:propulk` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:rascal_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:raw_martian_raptor_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:salmon_slice` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:sand_shapper` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:spider_pig_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:tuff_golem_heart` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat | 黑名单：关键词 _heart |
+| ? | `compatdelight:umvuthana` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:warden_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:warped_enderman` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:wilden_stalker_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:wildfire_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `compatdelight:wither_meat` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat | 黑名单：关键词 wither |
+| ? | `compatdelight:wraither_flesh` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| 卷心菜种子 | `farmersdelight:cabbage_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 番茄种子 | `farmersdelight:tomato_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 辣椒种子 | `kaleidoscope_cookery:chili_seed` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 生菜种子 | `kaleidoscope_cookery:lettuce_seed` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 番茄种子 | `kaleidoscope_cookery:tomato_seed` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 野生稻米 | `kaleidoscope_cookery:wild_rice` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 箭 | `minecraft:arrow` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | armory | - | 手写价 |  |
+| 甜菜种子 | `minecraft:beetroot_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 红砖 | `minecraft:brick` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | kiln | - | 手写价 |  |
+| 生鳕鱼 | `minecraft:cod` | 0.2 | 0.17 | 0.236 | 2048 | 4096 | 是 | auto_foods、auto_seafood、fishing | - | 手写价 |  |
+| 梯子 | `minecraft:ladder` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | - | quarrying | 手写价 |  |
+| 西瓜种子 | `minecraft:melon_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 南瓜种子 | `minecraft:pumpkin_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 生兔肉 | `minecraft:rabbit` | 0.2 | 0.17 | 0.236 | 2048 | 4096 | 是 | auto_foods、fishing | - | 手写价 |  |
+| 石砖 | `minecraft:stone_bricks` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | quarrying | - | 手写价 |  |
+| 小麦种子 | `minecraft:wheat_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| ? | `nourished_nether:cooked_hoglin` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| ? | `nourished_nether:raw_hoglin` | 0.2 | 0.17 | 0.236 | 64 | 64 | 是 | cookery | banquet | 标签 #c:meat |  |
+| 甜椒种子 | `rusticdelight:bell_pepper_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 棉花种子 | `rusticdelight:cotton_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 姜花 | `snowyspirit:ginger_flower` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 亚麻种子 | `supplementaries:flax_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 香茅种子 | `ubesdelight:lemongrass_seeds` | 0.2 | 0.17 | 0.236 | 2048 | 4096 |  | auto_seeds、cookery | - | 标签 #c:seeds |  |
+| 白色陶瓦 | `minecraft:white_terracotta` | 0.18 | 0.153 | 0.212 | 2048 | 4096 |  | kiln | - | 手写价 |  |
+| 苹果 | `minecraft:apple` | 0.15 | 0.128 | 0.177 | 2048 | 4096 | 是 | auto_foods、cookery、orchard | banquet | 手写价 |  |
+| 兔子皮 | `minecraft:rabbit_hide` | 0.15 | 0.128 | 0.177 | 2048 | 4096 |  | fishing | - | 手写价 |  |
+| 线 | `minecraft:string` | 0.15 | 0.128 | 0.177 | 2048 | 4096 |  | textile | armory、fishing | 手写价 |  |
+| 糖 | `minecraft:sugar` | 0.15 | 0.128 | 0.177 | 2048 | 4096 |  | - | brewing | 手写价 |  |
+| 陶瓦 | `minecraft:terracotta` | 0.15 | 0.128 | 0.177 | 2048 | 4096 |  | kiln | - | 手写价 |  |
+| 白色地毯 | `minecraft:white_carpet` | 0.15 | 0.128 | 0.177 | 2048 | 4096 |  | textile | - | 手写价 |  |
+| 甜菜根 | `minecraft:beetroot` | 0.12 | 0.102 | 0.142 | 2048 | 4096 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 手写价 |  |
+| 火把 | `minecraft:torch` | 0.12 | 0.102 | 0.142 | 2048 | 4096 |  | - | coal | 手写价 |  |
+| 小麦 | `minecraft:wheat` | 0.12 | 0.102 | 0.142 | 2048 | 4096 | 是 | cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、backwater、banquet、brewing、herding、quarrying | 手写价 |  |
+| 骨粉 | `minecraft:bone_meal` | 0.1 | 0.085 | 0.118 | 2048 | 4096 |  | - | farming | 手写价 |  |
+| 胡萝卜 | `minecraft:carrot` | 0.1 | 0.085 | 0.118 | 2048 | 4096 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 手写价 |  |
+| 羽毛 | `minecraft:feather` | 0.1 | 0.085 | 0.118 | 2048 | 4096 |  | - | fishing | 手写价 |  |
+| 玻璃瓶 | `minecraft:glass_bottle` | 0.1 | 0.085 | 0.118 | 2048 | 4096 |  | brewing | - | 手写价 |  |
+| 橡木台阶 | `minecraft:oak_slab` | 0.1 | 0.085 | 0.118 | 2048 | 4096 |  | - | orchard | 手写价 |  |
+| 马铃薯 | `minecraft:potato` | 0.1 | 0.085 | 0.118 | 2048 | 4096 | 是 | auto_foods、cookery、farming | auto_dyes、auto_foods、auto_mushrooms、auto_seafood、auto_seeds、banquet、brewing | 手写价 |  |
+| 黏土球 | `minecraft:clay_ball` | 0.08 | 0.068 | 0.094 | 2048 | 4096 |  | - | kiln | 手写价 |  |
+| 深板岩 | `minecraft:deepslate` | 0.08 | 0.068 | 0.094 | 2048 | 4096 |  | quarrying | auto_glass | 手写价 |  |
+| 甜浆果 | `minecraft:sweet_berries` | 0.08 | 0.068 | 0.094 | 2048 | 4096 | 是 | auto_foods、brewing、orchard | - | 手写价 |  |
+| 沙砾 | `minecraft:gravel` | 0.06 | 0.051 | 0.071 | 2048 | 4096 |  | - | - | 手写价 |  |
+| 蟹钳 | `ecologics:crab_claw` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `ends_delight:dragon_egg_shell_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `ends_delight:dragon_tooth_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `ends_delight:end_stone_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `ends_delight:purpur_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `exlinecopperequipment:copper_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `exlinecopperequipment:copper_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `exlinecopperequipment:copper_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `exlinecopperequipment:copper_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `exlinecopperequipment:copper_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 相册 | `exposure:album` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| 已署名的相册 | `exposure:signed_album` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| 钻石刀 | `farmersdelight:diamond_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 燧石刀 | `farmersdelight:flint_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金刀 | `farmersdelight:golden_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铁刀 | `farmersdelight:iron_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金刀 | `farmersdelight:netherite_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `galosphere:echo_bell` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石菜刀 | `kaleidoscope_cookery:diamond_kitchen_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金菜刀 | `kaleidoscope_cookery:gold_kitchen_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铁菜刀 | `kaleidoscope_cookery:iron_kitchen_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 锅铲 | `kaleidoscope_cookery:kitchen_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金菜刀 | `kaleidoscope_cookery:netherite_kitchen_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 镰刀 | `kaleidoscope_cookery:sickle` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 安山岩 | `minecraft:andesite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 手写价 |  |
+| 黑色染色玻璃板 | `minecraft:black_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 蓝色染色玻璃板 | `minecraft:blue_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 弓 | `minecraft:bow` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 棕色染色玻璃板 | `minecraft:brown_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 刷子 | `minecraft:brush` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 圆石 | `minecraft:cobblestone` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 手写价 |  |
+| 铜斧 | `minecraft:copper_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铜锄 | `minecraft:copper_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铜镐 | `minecraft:copper_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铜铲 | `minecraft:copper_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铜剑 | `minecraft:copper_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 青色染色玻璃板 | `minecraft:cyan_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 钻石斧 | `minecraft:diamond_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石锄 | `minecraft:diamond_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石镐 | `minecraft:diamond_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石锹 | `minecraft:diamond_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石剑 | `minecraft:diamond_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 闪长岩 | `minecraft:diorite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 打火石 | `minecraft:flint_and_steel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金斧 | `minecraft:golden_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金锄 | `minecraft:golden_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金镐 | `minecraft:golden_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金锹 | `minecraft:golden_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金剑 | `minecraft:golden_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 花岗岩 | `minecraft:granite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 灰色染色玻璃板 | `minecraft:gray_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 绿色染色玻璃板 | `minecraft:green_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 虫蚀深板岩 | `minecraft:infested_deepslate` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 虫蚀石头 | `minecraft:infested_stone` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 铁斧 | `minecraft:iron_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铁锹 | `minecraft:iron_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 知识之书 | `minecraft:knowledge_book` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| 淡蓝色染色玻璃板 | `minecraft:light_blue_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 淡灰色染色玻璃板 | `minecraft:light_gray_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 黄绿色染色玻璃板 | `minecraft:lime_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 重锤 | `minecraft:mace` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 品红色染色玻璃板 | `minecraft:magenta_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 下界合金斧 | `minecraft:netherite_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金锄 | `minecraft:netherite_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金镐 | `minecraft:netherite_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金锹 | `minecraft:netherite_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金剑 | `minecraft:netherite_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 橙色染色玻璃板 | `minecraft:orange_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 粉红色染色玻璃板 | `minecraft:pink_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 磨制安山岩 | `minecraft:polished_andesite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 磨制深板岩 | `minecraft:polished_deepslate` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 磨制闪长岩 | `minecraft:polished_diorite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 磨制花岗岩 | `minecraft:polished_granite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 紫色染色玻璃板 | `minecraft:purple_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 红色染色玻璃板 | `minecraft:red_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 沙子 | `minecraft:sand` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | kiln | 手写价 |  |
+| 木棍 | `minecraft:stick` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | backwater | - | 手写价 |  |
+| 石头 | `minecraft:stone` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 石锄 | `minecraft:stone_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 石镐 | `minecraft:stone_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 石锹 | `minecraft:stone_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 石剑 | `minecraft:stone_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 三叉戟 | `minecraft:trident` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 凝灰岩 | `minecraft:tuff` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 白色染色玻璃板 | `minecraft:white_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 木斧 | `minecraft:wooden_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木锄 | `minecraft:wooden_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木镐 | `minecraft:wooden_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木锹 | `minecraft:wooden_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木剑 | `minecraft:wooden_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 书与笔 | `minecraft:writable_book` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| 成书 | `minecraft:written_book` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| 黄色染色玻璃板 | `minecraft:yellow_stained_glass_pane` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:glass_panes |  |
+| 石刀 | `moredelight:stone_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木刀 | `moredelight:wooden_knife` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `patchouli:guide_book` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #minecraft:bookshelf_books |  |
+| ? | `pureamethysttools:amethyst_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:amethyst_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:amethyst_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:amethyst_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:amethyst_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:pure_amethyst_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:pure_amethyst_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:pure_amethyst_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:pure_amethyst_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureamethysttools:pure_amethyst_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:emerald_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:emerald_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:emerald_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:emerald_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:emerald_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_netherite_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_netherite_hoe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_netherite_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_netherite_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_netherite_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_pickaxe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_shovel` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `pureemeraldtools:pure_emerald_sword` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `regions_unexplored:argillite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 白垩 | `regions_unexplored:chalk` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 生苔的石头 | `regions_unexplored:mossy_stone` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | quarrying | auto_glass | 标签 #c:stones |  |
+| 泡泡环 | `supplementaries:bubble_blower` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 弹弓 | `supplementaries:slingshot` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 扳手 | `supplementaries:wrench` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 烈焰钓竿 | `tide:blazing_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 烈焰剑鱼 | `tide:blazing_swordfish` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 紫水晶钓竿 | `tide:crystal_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石钓竿 | `tide:diamond_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 共鸣之竿 | `tide:echo_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金钓竿 | `tide:golden_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 蜂行钓竿 | `tide:honeycomb_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铁钓竿 | `tide:iron_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 点金钓竿 | `tide:midas_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金钓竿 | `tide:netherite_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 海晶钓竿 | `tide:prismarine_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 星光弓 | `tide:starlight_bow` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 石钓竿 | `tide:stone_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 逐日钓竿 | `tide:sunflower_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 英雄之竿 | `tide:village_fishing_rod` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| ? | `toffys_hooks:hook_axe` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 钻石擀面杖 | `ubesdelight:rolling_pin_diamond` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 金擀面杖 | `ubesdelight:rolling_pin_gold` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 铁擀面杖 | `ubesdelight:rolling_pin_iron` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 下界合金擀面杖 | `ubesdelight:rolling_pin_netherite` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 木擀面杖 | `ubesdelight:rolling_pin_wood` | 0.05 | 0.043 | 0.059 | 2048 | 4096 |  | - | - | 标签 #c:tools | 黑名单：标签 |
+| 腐肉 | `minecraft:rotten_flesh` | 0.03 | 0.025 | 0.035 | 2048 | 4096 | 是 | auto_foods、backwater | - | 手写价 |  |

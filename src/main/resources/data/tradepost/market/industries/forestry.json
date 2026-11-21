@@ -1,0 +1,20 @@
+{
+  "id": "forestry",
+  "display": "林业",
+  "supply": [
+    "@log",
+    "@plank",
+    "@sapling",
+    "@mushroom"
+  ],
+  "demand": [
+    "minecraft:bone_meal",
+    "@charcoal",
+    "@fiber"
+  ],
+  "biome_weights": {
+    "#minecraft:is_forest": 4,
+    "#minecraft:is_taiga": 2,
+    "default": 1
+  }
+}

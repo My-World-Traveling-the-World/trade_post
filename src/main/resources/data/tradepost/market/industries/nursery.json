@@ -1,0 +1,22 @@
+{
+  "id": "nursery",
+  "display": "园艺",
+  "supply": [
+    "@flower",
+    "@sapling",
+    "@plant",
+    "@potted"
+  ],
+  "demand": [
+    "@clay",
+    "@glass",
+    "@dye",
+    "minecraft:bone_meal"
+  ],
+  "biome_weights": {
+    "#c:is_forest": 3,
+    "#c:is_jungle": 2,
+    "#c:is_plains": 2,
+    "default": 1
+  }
+}

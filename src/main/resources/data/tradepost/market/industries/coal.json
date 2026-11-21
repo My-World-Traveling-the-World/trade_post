@@ -1,0 +1,18 @@
+{
+  "id": "coal",
+  "display": "采煤",
+  "supply": [
+    "@coal",
+    "@charcoal",
+    "@log"
+  ],
+  "demand": [
+    "@log",
+    "@sand",
+    "minecraft:torch"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 3,
+    "#minecraft:is_overworld": 1
+  }
+}

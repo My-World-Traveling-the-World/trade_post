@@ -1,0 +1,20 @@
+{
+  "id": "scholar",
+  "display": "学术",
+  "supply": [
+    "@book",
+    "@paper",
+    "@ink",
+    "@enchanted_book",
+    "@map"
+  ],
+  "demand": [
+    "minecraft:paper",
+    "minecraft:ink_sac",
+    "@book"
+  ],
+  "biome_weights": {
+    "#minecraft:is_forest": 2,
+    "#minecraft:is_overworld": 1
+  }
+}

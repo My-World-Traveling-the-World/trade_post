@@ -1,0 +1,15 @@
+{
+  "type": "lithostitched:add_template_pool_elements",
+  "template_pools": "kaisyn:village/exclusives/swedish/houses",
+  "elements": [
+    {
+      "weight": 26,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "processors": "minecraft:empty",
+        "location": "tradepost:post_station"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "totem_trade",
+  "item": "minecraft:totem_of_undying",
+  "count": 1,
+  "cost": [
+    {
+      "item": "minecraft:emerald_block",
+      "value": 70
+    },
+    {
+      "item": "minecraft:gold_block",
+      "value": 28
+    }
+  ],
+  "weight": 4,
+  "value_multiplier": 20
+}

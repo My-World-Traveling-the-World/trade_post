@@ -1,0 +1,22 @@
+{
+  "id": "armory",
+  "display": "军需",
+  "supply": [
+    "@weapon",
+    "@armor",
+    "@shield",
+    "@ammo",
+    "@tool"
+  ],
+  "demand": [
+    "@ingot",
+    "@leather",
+    "@fiber"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 2,
+    "#c:is_plains": 2,
+    "#c:is_savanna": 2,
+    "default": 1
+  }
+}

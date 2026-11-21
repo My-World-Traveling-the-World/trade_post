@@ -1,0 +1,18 @@
+{
+  "id": "gems",
+  "display": "宝石",
+  "supply": [
+    "@gem",
+    "@redstone",
+    "@block_9x"
+  ],
+  "demand": [
+    "@raw_ore",
+    "@glass",
+    "minecraft:amethyst_shard"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 3,
+    "default": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "quarrying",
+  "display": "采石",
+  "supply": [
+    "@stone",
+    "@gravel",
+    "@sand",
+    "@clay"
+  ],
+  "demand": [
+    "@log",
+    "@coal",
+    "minecraft:torch"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 3,
+    "#minecraft:is_overworld": 1
+  }
+}

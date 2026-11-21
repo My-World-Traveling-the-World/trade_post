@@ -1,0 +1,23 @@
+# 构建产物
+build/
+out/
+*.class
+
+# 运行目录（dev client 的存档、日志）
+run/
+logs/
+
+# 本地依赖：把 Jade 的 jar 放这里，构建脚本会用到
+libs/*.jar
+!libs/.gitkeep
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.ipr
+*.iws
+
+# 系统
+Thumbs.db
+.DS_Store

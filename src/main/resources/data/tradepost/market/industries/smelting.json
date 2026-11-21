@@ -1,0 +1,23 @@
+{
+  "id": "smelting",
+  "display": "冶炼",
+  "supply": [
+    "@ingot",
+    "@nugget",
+    "@block_9x",
+    "@dust"
+  ],
+  "demand": [
+    "@ore",
+    "@raw_ore",
+    "@coal",
+    "@charcoal",
+    "@sand",
+    "@catalyst"
+  ],
+  "biome_weights": {
+    "#c:is_mountain": 3,
+    "#c:is_badlands": 2,
+    "default": 1
+  }
+}

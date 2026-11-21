@@ -1,0 +1,19 @@
+{
+  "id": "textile",
+  "display": "纺织",
+  "supply": [
+    "@wool",
+    "@fiber",
+    "@leather"
+  ],
+  "demand": [
+    "@dye",
+    "@fiber",
+    "@bottle"
+  ],
+  "biome_weights": {
+    "#c:is_plains": 2,
+    "#minecraft:is_forest": 2,
+    "default": 1
+  }
+}
